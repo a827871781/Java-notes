@@ -1,0 +1,110 @@
+ # 方法模板模式
+
+### UML
+
+ ![1556538128337](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\1556538128337.png)
+
+``` java
+public abstract class AbstractClass {
+	public  void templateMethod(){
+		primitiveMethod1();
+		primitiveMethod2();
+	}
+	public abstract void  primitiveMethod1();
+	public abstract void  primitiveMethod2();
+
+}
+
+
+public class ConcreteClassA extends AbstractClass{
+
+	@Override
+	public void primitiveMethod1() {
+		System.out.println("ConcreteClassA primitive method 1...");
+	}
+
+	@Override
+	public void primitiveMethod2() {
+		System.out.println("ConcreteClassA primitive method 2...");
+	}
+
+}
+
+public class ConcreteClassB extends AbstractClass{
+
+	@Override
+	public void primitiveMethod1() {
+		System.out.println("ConcreteClassB primitive method 1...");
+	}
+
+	@Override
+	public void primitiveMethod2() {
+		System.out.println("ConcreteClassB primitive method 2...");
+	}
+
+}
+
+
+public class Client {
+	public static void main(String[] args) {
+		AbstractClass abstractClass = new ConcreteClassA();
+		abstractClass.templateMethod();
+
+		abstractClass = new ConcreteClassB();
+		abstractClass.templateMethod();
+	}
+}
+```
+
+## 使用场景
+
+当不变和可变的行为在方法的子类中混合在一起时，不变的行为就会在子类中重复出现。我们可以通过模板方法模式将这些行为搬移到单一的地方，这样就帮助子类摆脱重复的不变行为的纠结。
+
+多个类做同一件事，但处理细节略有不同时，使用此模式。
+
+Springboot IOC 容器初始化 就使用到了模板方法模式，超类声明方法，超类调用方法，子类提供具体实现.
+
+``` java
+/**
+ * SpringApplication 类 方法
+ */
+public ConfigurableApplicationContext run(String... args) {
+		...
+			refreshContext(context);
+		...
+}
+
+private void refreshContext(ConfigurableApplicationContext context) {
+    refresh(context);
+    ...
+}
+protected void refresh(ApplicationContext applicationContext) {
+		Assert.isInstanceOf(AbstractApplicationContext.class, applicationContext);
+		((AbstractApplicationContext) applicationContext).refresh();
+}
+/**
+ * ConfigurableApplicationContext 类
+ */
+public interface ConfigurableApplicationContext extends ApplicationContext, Lifecycle, Closeable {
+    ...
+    void refresh() throws BeansException, IllegalStateException;
+    ...
+}
+
+
+```
+
+
+
+## 优缺点
+
+#### 优点
+
+- 把不变的行为搬到超类，去除子类中的重复代码，提供高代码复用；
+- 使逻辑处理通用化，一处改动处处生效。
+- 子类可以不关注父类行为细节，更关注于自身要处理的逻辑。
+
+#### 缺点
+
+- 将不变行为集成到超类中，当类的行为比较复杂时，对于超类的管理和扩展将会越来越复杂。
+- 用户在使用时，需要对父类进行了解。
