@@ -66,7 +66,7 @@ For-Each循环得加入简化了集合的遍历。假设我们要遍历一个集
 
 ## `JDK7`
 
-1. 对Java集合（Collections）的增强支持，可直接采用[]、{}的形式存入对象，采用[]的形式按照索引、键值来获取集合中的对象。如：
+1. **对Java集合（Collections）的增强支持，可直接采用[]、{}的形式存入对象，采用[]的形式按照索引、键值来获取集合中的对象。如：**
 
 ```java
     List<String>list=[“item1”,”item2”];//存
@@ -74,6 +74,7 @@ For-Each循环得加入简化了集合的遍历。假设我们要遍历一个集
     Set<String>set={“item1”,”item2”,”item3”};//存
     Map<String,Integer> map={“key1”:1,”key2”:2};//存
     Intvalue=map[“key1”];//取12345
+	//!!!!!!!!!!!!!多版本测试 并没有这功能 并查阅oracle官网也没有此特性
 ```
 
 2. 在Switch中可用String
@@ -81,8 +82,8 @@ For-Each循环得加入简化了集合的遍历。假设我们要遍历一个集
 4. 支持二进制数字，如：`int binary= 0b1001_1001; `
 5. 简化了可变参数方法的调用 
 6. 调用泛型类的构造方法时，可以省去泛型参数，编译器会自动判断。
-7. char类型的equals方法: `booleanCharacter.equalsIgnoreCase(char ch1, char ch2) ``
-8. Map集合支持并发请求，注HashTable是线程安全的，Map是非线程安全的。但此处更新使得其也支持并发。另外，Map对象可这样定义：Map map = {name:”xxx”,age:18};
+7. char类型的equals方法: `boolean Character.equalsIgnoreCase(char ch1, char ch2) `
+8. Map集合支持并发请求，注`HashTable`是线程安全的，Map是非线程安全的。但此处更新使得其也支持并发。另外，Map对象可这样定义：`Map map = {name:”xxx”,age:18};`
 
 ### 9 、自动资源管理（try with resource）
 
