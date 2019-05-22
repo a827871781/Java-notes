@@ -2,7 +2,7 @@
 
 ### UML图
 
-![1555503705127](https://github.com/a827871781/Java-notes/blob/master/images/7.png)
+![1555503705127](https://github.com/a827871781/Java-notes/blob/master/images/8.png)
 
 ```java
 public  abstract class Aggregate {
