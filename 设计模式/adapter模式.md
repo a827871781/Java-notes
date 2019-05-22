@@ -2,7 +2,7 @@
 
 # UML
 
-![1555587976595](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\1555587976595.png)
+![1555587976595](https://github.com/a827871781/Java-notes/blob/master/images/9.png)
 
 ```java
 public interface Target {
