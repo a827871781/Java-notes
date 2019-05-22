@@ -8,9 +8,9 @@
 
 通过调用SpringFactoriesLoader.loadFactoryNames扫描加载含有META-INF/spring.factories文件的jar包，该文件记录了具有哪些自动配置类。
 
-![1557885968756](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\1557885968756.png)
+![1557885968756](https://github.com/a827871781/Java-notes/blob/master/images/4.png)
 
 再结合@Conditional注解进行条件注入
 
-![1557886037513](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\1557886037513.png)
+![1557886037513](https://github.com/a827871781/Java-notes/blob/master/images/5.png)
 
