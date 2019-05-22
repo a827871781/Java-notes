@@ -1,6 +1,6 @@
 ###  一条`SQL`查询语句是如何执行的
 
-![page1](C:\Users\Administrator\Desktop\page1.png)
+![page1](https://github.com/a827871781/Java-notes/blob/master/images/1.png)
 
 ### 一条SQL更新语句是如何执行的
 
