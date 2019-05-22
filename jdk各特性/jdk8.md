@@ -150,6 +150,15 @@ optional.get(); // "bam"
 optional.orElse("fallback"); // "bam"
 
 optional.ifPresent((s) -> System.out.println(s.charAt(0))); // "b"
+//默认值
+if (null == status) {
+   param.put("status", new ArrayList<String>());
+} else {
+   param.put("status", status);
+  }
+Optional.ofNullable(status).orElse(new ArrayList<String>());
+
+
 ```
 
 ### 6.时间日期API
