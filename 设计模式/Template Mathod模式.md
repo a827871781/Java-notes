@@ -2,7 +2,7 @@
 
 ### UML
 
- ![1556538128337](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\1556538128337.png)
+ ![1556538128337](https://github.com/a827871781/Java-notes/blob/master/images/7.png)
 
 ``` java
 public abstract class AbstractClass {
