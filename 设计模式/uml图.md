@@ -16,7 +16,7 @@ uml图
 
 聚合关系：一个类中持有另外一个类的实例、无论数组还是集合 都是聚合
 
-聚合关系：持有另外类实例的类用实线箭头下面空心菱形 指向 被持有类   ![1555502036570](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\1555502036570.png)
+聚合关系：持有另外类实例的类用实线箭头下面空心菱形 指向 被持有类   ![1555502036570](https://github.com/a827871781/Java-notes/blob/master/images/6.png)
 
 ### 可见性
 
