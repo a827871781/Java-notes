@@ -77,7 +77,7 @@ public class TestService {
 -------------代理后获取注解内容-------------
 测试注解`
 
-![](<https://github.com/a827871781/Java-notes/tree/master/images/11.png>\)
+![](<https://github.com/a827871781/Java-notes/images/11.png \>)
 
 解决方案：
 
