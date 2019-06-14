@@ -9,7 +9,7 @@
 
 将功能结构 和实现结构分离，就是桥接模式
 
-### `UML`
+### UML
 
 ![1558010618790](https://github.com/a827871781/Java-notes/blob/master/images/10.png)
 
