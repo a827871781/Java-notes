@@ -44,44 +44,72 @@ feign调用服务时如果要上传图片 需要引入两个jar包，并建立�
 
 
 
-#### feign参数限制：
+#### feign参数传递：
 
-1.  当参数比较复杂时，feign即使声明为get请求也会强行使用post请求
+1. 当参数比较复杂时，feign即使声明为get请求也会强行使用post请求
 
-2.  不支持@GetMapping类似注解声明请求，需使用@RequestMapping(value = "x",method = RequestMethod.GET)
+2. 不支持@GetMapping类似注解声明请求，需使用`@RequestMapping(value = "x",method = RequestMethod.GET)`
 
-3.  使用@RequestParam注解时必须要在后面加上参数名
+3. 传基本类型参数使用@RequestParam注解时必须要在后面加上参数名
 
-4.  多参数的 URL 也可以使用 Map 去构建(不建议，语义不清晰)
+   ```java
+   @RequestMapping("/demo-service/test1")
+     public String test1(@RequestParam(value = "userName") String userName);
+   ```
 
-5.  post 传递对象时，可以` @PostMapping(value = "x",,consumes = "application/json")`
+4. 传 Map 传参数使用@RequestParam注解时不需要加注解的 value 参数
 
-   或 `@PostMapping(value="x")
-   List<x>getA11(@RequestBody X x);`
+   ```java
+   @RequestMapping("/demo-service/test2")
+   public String test2(@RequestParam Map<String,Object> userMap);
+   ```
+
+5. 传对象的时候，需要加 @RequestBody 注解
+
+   ```java
+   @RequestMapping("/demo-service/test3")
+   public String test3(@RequestBody DemoServiceUser user);
+   //服务提供者
+   @RequestMapping("/test3")
+   public String test3(@RequestBody(required = false) User user) {
+     return "[test3]userName=" + user.getUserName() + ", age=" + user.getAge();
+   }
+   ```
+
+6. 传递`List<String>` 参数，要在feign接口上声明为String[] 
+
+   ```java
+   @RequestMapping("/demo-service/test4")
+   public String test4(@RequestParam("ids") String  [] ids);
+   //服务提供者
+   @RequestMapping("/test4")
+   public String test4( @RequestParam("ids") List<String > ids  ) {
+       return "" ;
+   }
+   
+   ```
+
+   
 
 
 
 #### 心跳配置开发环境中配置
 
+```properties
 eureka.instance.lease-renewal-interval-in-seconds   =15 eureka.instance.lease-expiration-duration-in-seconds =5 
+```
 
 每15S发送一次心跳，超过5S没有收到心跳，则下线。导致前后端联调时服务经常会404
 
 解决方案：
 
+```properties
 eureka.instance.lease-renewal-interval-in-seconds   =30 eureka.instance.lease-expiration-duration-in-seconds =60 
+```
 
 30S一次心跳，60S每心跳下线，容错一次。
 
 
-
-
-
-#### mybatis plus 
-
-用page  可以分页查询 但是并不能查询出totel  条数
-
-原因：项目中引入的pagehelper 插件  和mybatis plus  冲突  
 
 
 

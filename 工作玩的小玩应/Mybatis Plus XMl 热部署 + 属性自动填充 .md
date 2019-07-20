@@ -11,8 +11,6 @@ mybatis-plus:
         refresh-mapper: true
 ```
 
-
-
 **JavaBean：**
 
 ```java
@@ -84,3 +82,8 @@ public class MyMetaObjectHandler extends MetaObjectHandler {
 }
 ```
 
+### mybatis plus 
+
+用page  可以分页查询 但是并不能查询出totel  条数
+
+原因：项目中引入的pagehelper 插件  和mybatis plus  冲突  

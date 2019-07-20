@@ -32,7 +32,7 @@ java——类的包装器
 
 可变参数的简单语法格式为：
 
-`methodName([argumentList], dataType...argumentName);`
+`methodName(String...argumentName);`
 
 ### 5.内省（Introspector）
 
@@ -47,26 +47,41 @@ C++ 通过模板技术可以指定集合的元素类型，而Java在1.5之前一
 
 For-Each循环得加入简化了集合的遍历。假设我们要遍历一个集合对其中的元素进行一些处理。
 
-### ８.　`JUC`
+### ８.JUC
 
  `ConcurrentHashMap(简称CHM)是在Java 1.5作为Hashtable的替代选择新引入的,是concurrent包的重要成员。`
 
-## `JDK6`
+## JDK6
 
-1. AWT新增加了两个类:Desktop和SystemTray，其中前者用来通过系统默认程序来执行一个操作，如使用默认浏览器浏览指定的URL,用默认邮件客户端给指定的邮箱发邮件,用默认应用程序打开或编辑文件(比如,用记事本打开以txt为后缀名的文件),用系统默认的打印机打印文档等。后者可以用来在系统托盘区创建一个托盘程序。（开发中基本没用过）
+1. AWT新增加了两个类:Desktop和SystemTray
+
+    其中前者用来通过系统默认程序来执行一个操作，如使用默认浏览器浏览指定的URL,用默认邮件客户端给指定的邮箱发邮件,用默认应用程序打开或编辑文件(比如,用记事本打开以txt为后缀名的文件),用系统默认的打印机打印文档等。后者可以用来在系统托盘区创建一个托盘程序。（开发中基本没用过）
+
 2. 使用JAXB2来实现对象与XML之间的映射，可以将一个Java对象转变成为XML格式，反之亦然 
+
 3. StAX，一种利用拉模式解析(pull-parsing)XML文档的API。类似于SAX，也基于事件驱动模型。之所以将StAX加入到JAXP家族，是因为JDK6中的JAXB2和JAX-WS 2.0中都会用StAX。
+
 4. 使用Compiler API，动态编译Java源文件，如JSP编译引擎就是动态的，所以修改后无需重启服务器。（刚知道是从这里开始可以动态编译的）
+
 5. 轻量级Http Server API，据此可以构建自己的嵌入式HttpServer,它支持Http和Https协议。
+
 6. 插入式注解处理API(PluggableAnnotation Processing API) 
+
 7. 提供了Console类用以开发控制台程序，位于java.io包中。据此可方便与Windows下的cmd或Linux下的Terminal等交互。 
+
 8. 对脚本语言的支持如: ruby,groovy, javascript 
+
 9. Common Annotations，原是J2EE 5.0规范的一部分，现在把它的一部分放到了J2SE 6.0中 
+
 10. 嵌入式数据库 Derby（这个也是刚知道，基本没用过）
 
-## `JDK7`
+## JDK7
 
-1. **对Java集合（Collections）的增强支持，可直接采用[]、{}的形式存入对象，采用[]的形式按照索引、键值来获取集合中的对象。如：**
+### 1. 对Java集合（Collections）的增强支持
+
+**多版本测试 并没有这功能 并查阅oracle官网也没有此特性**
+
+可直接采用[]、{}的形式存入对象，采用[]的形式按照索引、键值来获取集合中的对象。如：
 
 ```java
     List<String>list=[“item1”,”item2”];//存
@@ -74,25 +89,36 @@ For-Each循环得加入简化了集合的遍历。假设我们要遍历一个集
     Set<String>set={“item1”,”item2”,”item3”};//存
     Map<String,Integer> map={“key1”:1,”key2”:2};//存
     Intvalue=map[“key1”];//取12345
-	//!!!!!!!!!!!!!多版本测试 并没有这功能 并查阅oracle官网也没有此特性
 ```
 
-2. 在Switch中可用String
-3. 数值可加下划线用作分隔符（编译时自动被忽略） `int one_million = 1_000_000;`
-4. 支持二进制数字，如：`int binary= 0b1001_1001; `
-5. 简化了可变参数方法的调用 
-6. 调用泛型类的构造方法时，可以省去泛型参数，编译器会自动判断。
-7. char类型的equals方法: `boolean Character.equalsIgnoreCase(char ch1, char ch2) `
-8. Map集合支持并发请求，注`HashTable`是线程安全的，Map是非线程安全的。但此处更新使得其也支持并发。另外，Map对象可这样定义：`Map map = {name:”xxx”,age:18};`
+### 2. 在Switch中可用String
 
-### 9 、自动资源管理（try with resource）
+### 3. 数值可加下划线用作分隔符（编译时自动被忽略）
+
+`int one_million = 1_000_000;`
+
+### 4. 支持二进制数字
+
+如：`int binary= 0b1001_1001; `
+
+### 5. 调用泛型类的构造方法时，可以省去泛型参数，编译器会自动判断。
+
+### 6. char类型的equals方法:
+
+ `boolean Character.equalsIgnoreCase(char ch1, char ch2) `
+
+### 7. Map集合支持并发请求
+
+注`HashTable`是线程安全的，Map是非线程安全的。但此处更新使得其也支持并发。另外，Map对象可这样定义：`Map map = {name:”xxx”,age:18};`
+
+### 8. 自动资源管理（try with resource）
 
 ```java
      try (BufferedReader br = new BufferedReader(new FileReader(path)) { 
              return br.readLine(); 
           } 
 ```
-### 10 、Boolean类型反转，空指针安全,参与位运算 
+### 9. Boolean类型反转，空指针安全,参与位运算 
 
 ```java
 //类型反转，空指针安全
@@ -106,7 +132,7 @@ boolean Booleans.or(Boolean[] array)
 boolean Booleans.xor(Boolean[] array)
 ```
 
-### 11 、安全的加减乘除: 
+### 10. 安全的加减乘除: 
 
 ```java
 int Math.safeToInt(long value)
