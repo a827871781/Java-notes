@@ -6,7 +6,7 @@
 | al     | 生成ArrayList              |
 | mp     | 生成HashMap                |
 | tl     | 生成try lock unlock 代码块 |
-| test   | 生成test方法               |
+| at     | 生成test方法               |
 | td     | 生成自定义TODO             |
 |        |                            |
 |        |                            |
@@ -14,4 +14,3 @@
 
 
 
-##### 
