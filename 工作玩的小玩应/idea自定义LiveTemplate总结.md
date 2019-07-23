@@ -1,16 +1,16 @@
 ### idea自定义LiveTemplate总结
 
-| 快捷键 | 功能                       |
-| ------ | -------------------------- |
-| aa     | 生成Autowired              |
-| al     | 生成ArrayList              |
-| mp     | 生成HashMap                |
-| tl     | 生成try lock unlock 代码块 |
-| at     | 生成test方法               |
-| td     | 生成自定义TODO             |
-|        |                            |
-|        |                            |
-|        |                            |
+| 快捷键 | 功能                             |
+| ------ | -------------------------------- |
+| aa     | Autowired                        |
+| al     | ArrayList                        |
+| mp     | HashMap                          |
+| tl     | try lock unlock 代码块           |
+| at     | test方法                         |
+| td     | 自定义TODO                       |
+| nt     | new Thread                       |
+| ft     | for Thread                       |
+| tcg    | Thread.currentThread().getName() |
 
 
 
