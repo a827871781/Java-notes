@@ -16,7 +16,8 @@
 | RestfulToolkit                 | 接口自测（有用，不过不常用）      |                        |
 | shifter                        |                                   |                        |
 | Translation                    | 谷歌翻译                          | ctrl + shift + o       |
-|                                |                                   |                        |
+| emacsIDEAs                     | 快速定位光标位置                  |                        |
+| alibaba cloud toolkit          | 远程部署                          |                        |
 |                                |                                   |                        |
 |                                |                                   |                        |
 

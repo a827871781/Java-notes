@@ -4,7 +4,9 @@
 
 解决方案消费者 requestMapping 注解 配置属性
 
+```java
   @RequestMapping(value="X",produces = { "application/json;charset=UTF-8" }) 
+```
 
 或者引入feign-jackson依赖
 
@@ -14,7 +16,7 @@
 
 feign调用服务时如果要上传图片 需要引入两个jar包，并建立配置对象
 
-但是这样引发另一个问题feign调用时如果返回是对象内还有对象的组合方式 那么不能讲属性映射到对象内对象 
+但是这样引发另一个问题feign调用时如果返回是对象内还有对象的组合方式 那么不能将属性映射到对象内对象 
 
 ```java
 <!--  feign 模拟表单提交       -->
@@ -30,15 +32,30 @@ feign调用服务时如果要上传图片 需要引入两个jar包，并建立�
 </dependency>
 
 /**
+*- 引用配置类MultipartSupportConfig.并且实例化
+*/
+@Configuration
+public class MultipartSupportConfig {
 
-- 引用配置类MultipartSupportConfig.并且实例化
-  */
-  class MultipartSupportConfig {
-  @Bean
-  public Encoder feignFormEncoder() {
-      return new SpringFormEncoder();
-  }
-  }
+    @Autowired
+    private ObjectFactory<HttpMessageConverters> messageConverters;
+
+    @Bean
+    public Encoder feignFormEncoder() {
+        return new SpringFormEncoder(new SpringEncoder(messageConverters));
+    }
+
+}
+  //feign接口声明
+@FeignClient(name="pp2s-hdfs-service",configuration= {MultipartSupportConfig.class})
+public interface FeignHdfsService {
+    @RequestMapping(value="/hdfs/file/v1.0/uploadOne", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+        String uploadOneFile(MultipartFile file);
+}
+
+//启动类增加注解 @EnableFeignClients
+
+
 
 ```
 
