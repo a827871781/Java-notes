@@ -1,4 +1,4 @@
-### idea自定义LiveTemplate总结
+# LiveTemplate
 
 | 快捷键 | 功能                             |
 | ------ | -------------------------------- |
@@ -22,5 +22,5 @@
 |        |                                  |
 |        |                                  |
 
-
+# Postfix Completion
 
