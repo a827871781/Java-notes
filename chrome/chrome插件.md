@@ -1,2 +1,34 @@
 chrome插件下载需要自行翻墙
 
+| 名称                           | 功能                                                         |
+| ------------------------------ | ------------------------------------------------------------ |
+| Adblock Plus                   | 广告拦截，好用                                               |
+| EditThisCookie                 | cookie管理器                                                 |
+| ElasticSearch Head             | esHead插件                                                   |
+| Google 翻译                    | 翻译                                                         |
+| IDM Integration Module         | IDM 下载插件,配合暴力猴下载用                                |
+| JSON-handle                    | JSON 格式化插件                                              |
+| LastPass                       | 密码管理，好用                                               |
+| Octotree                       | gitHub 代码 生成树结构                                       |
+| OneTab                         | 标签页管理，将标签转列表，节省内存                           |
+| Vimium                         | 浏览器vim插件，[快捷键](https://github.com/a827871781/Java-notes/blob/master/chrome/vimium%E5%BF%AB%E6%8D%B7%E9%94%AE.md)，好用 |
+| WEB前端助手                    | web 工具集，偶尔会用                                         |
+| 为什么你们就是不能加个空格呢？ | 页面美化 ，自动在网页中字符加空格                            |
+| 书签侧边栏                     | 书签管理，美化                                               |
+| 扩展管理器                     | 插件分类，一键管理                                           |
+| 掘金                           | 摸鱼必备，没事看些贴子                                       |
+| 暴力猴                         | 脚本管理，可以安装很多黑科技，推荐                           |
+| 简悦                           | 阅读模式，共享丝滑                                           |
+|                                |                                                              |
+|                                |                                                              |
+|                                |                                                              |
+|                                |                                                              |
+|                                |                                                              |
+|                                |                                                              |
+|                                |                                                              |
+|                                |                                                              |
+|                                |                                                              |
+|                                |                                                              |
+|                                |                                                              |
+|                                |                                                              |
+
