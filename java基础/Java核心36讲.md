@@ -71,5 +71,60 @@ Exception 和 Error 都是继承了 Throwable 类，在 Java 中只有 Throwable
 - Null 的判断逻辑并不是一成不变的，当方法允许返回 null 的时候使用 if-else 控制逻辑，否则就抛出 NullPointerException
 - 定义你自己的异常类层次，例如 UserException 和 SystemException 分别代表用户级别的异常信息和系统级别的异常信息，而其他的异常在这两个基类上进行扩展
 
+### 3、谈谈final、finally、 finalize有什么不同？
 
+**final** 可以用来修饰类、方法、变量，分别有不同的意义， final修饰的 class 代表不可以继承扩展， final的变量是不可以修改的，而 final的方法也是不可以重写的（ override ）。
+**finally** 则是 Java 保证重点代码一定要被执行的一种机制。我们可以使用 try-finally或者 try-catch-finally来进行类似关闭 JDBC 连接、保证 unlock 锁等动作。
+**finalize** 是基础类 java.lang.Object 的一个方法，它的设计目的是保证对象在被垃圾收集前完成特定资源的回收。 finalize机制现在已经**不推荐使用**，并且在 JDK 9 开始被标记为 deprecated 。
 
+以下情况finally不会执行：
+
+```java
+//1. try-cach 异常退出。
+try{
+    system.exit(1)
+}fnally{
+	print(1)
+}
+//2. 无限循环
+try{
+    while(ture){
+   		 print(1)
+    }
+}fnally{
+	print(2)	
+}
+//3. 线程被杀死
+//当执行 try，finally 的线程被杀死时。finally 也无法执行。
+
+```
+
+不要在 finally中使用 return 语句。使用不当可能会导致返回结果不可控
+
+finalize代替方案 ：虚引用 + 引用队列
+
+### 4、Java的对象引用
+
+Java中根据其生命周期的长短，将引用分为4类。
+
+1. 强引用（死都不清）
+    特点：我们平常典型编码Object obj = new Object()中的obj就是强引用。通过关键字new创建的对象所关联的引用就是强引用。 当JVM内存空间不足，JVM会抛出OutOfMemoryError运行时错误（OOM），使程序异常终止，对于一个普通的对象，如果没有其他的引用关系，只要超过了引用的作用域或者显式地将相应（强）引用赋值为 null，就是可以被垃圾收集的了。
+
+2.  软引用（满了才清）
+    特点：软引用通过SoftReference类实现。 软引用的生命周期比强引用短一些。只有当 JVM 认为内存不足时，才会去试图回收软引用指向的对象：即JVM 会确保在抛出 OutOfMemoryError之前，清理软引用指向的对象。
+    应用场景：一般用于做缓存。
+
+3. 弱引用（一次就清）
+    弱引用通过WeakReference类实现。 弱引用的生命周期比软引用短。在垃圾回收器线程扫描它所管辖的内存区域的过程中，一旦发现了具有弱引用的对象，不管当前内存空间足够与否，都会回收它的内存。由于垃圾回收器是一个优先级很低的线程，因此不一定会很快回收弱引用的对象。
+    应用场景：也可以用于做缓存。
+
+4.  虚引用（跟本没有）
+    特点：虚引用也叫幻象引用，通过PhantomReference类来实现。无法通过虚引用访问对象的任何属性或函数。幻象引用仅仅是提供了一种确保对象被 fnalize 以后，做某些事情的机制。如果一个对象仅持有虚引用，那么它就和没有任何引用一样，在任何时候都可能被垃圾回收器回收。虚引用必须和引用队列 （ReferenceQueue）联合使用。当垃圾回收器准备回收一个对象时，如果发现它还有虚引用，就会在回收对象的内存之前，把这个虚引用加入到与之关联的引用队列中。
+
+    ```java
+    ReferenceQueue queue = new ReferenceQueue ();
+    PhantomReference pr = new PhantomReference (object, queue);
+    ```
+
+    程序可以通过判断引用队列中是否已经加入了虚引用，来了解被引用的对象是否将要被垃圾回收。如果程序发现某个虚引用已经被加入到引用队列，那么就可以在所引用的对象的内存被回收之前采取一些程序行动。
+    应用场景：可用来跟踪对象被垃圾回收器回收的活动，当一个虚引用关联的对象被垃圾收集器回收之前会收到一条系统通知。
