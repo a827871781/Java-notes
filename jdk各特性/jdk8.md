@@ -175,58 +175,81 @@ Java 8日期/时间API是JSR-310的实现，它的实现目标是克服旧的日
 
 ```java
 
-//获取今天的日期
-LocalDate today = LocalDate.now();
+ 		//获取年、月、日信息
+        LocalDate today = LocalDate.now();
+        System.out.print("年:");
+        System.out.println(today.getYear());
+        System.out.print("月:");
+        System.out.println(today.getMonthValue());
+        System.out.print("日:");
+        System.out.println(today.getDayOfMonth());
 
-//获取年、月、日信息  
-LocalDate today = LocalDate.now();
-int year = today.getYear();
-int month = today.getMonthValue();
-int day = today.getDayOfMonth();
+        //处理特定日期
+        LocalDate dateOfBirth = LocalDate.of(2020, 01, 14);
+        System.out.print("特定日期:");
+        System.out.println(dateOfBirth);
 
-//处理特定日期    
-LocalDate dateOfBirth = LocalDate.of(2020, 01, 14);
+        //判断两个日期是否相等
+        LocalDate date1 = LocalDate.now();
+        if (date1.equals(today)) {
+            System.out.print("判断相等：");
+            System.out.println(date1 +"="+today );
+        }
 
-//判断两个日期是否相等
-LocalDate today = LocalDate.now();
-LocalDate date1 = LocalDate.of(2019, 01, 14);
-if(date1.equals(today)){}
+        //判断日期是早于还是晚于另一个日期
+        LocalDate tomorrow = LocalDate.of(2020, 8, 16);
+        if (tomorrow.isAfter(today)) {
+            System.out.print("判断早于：");
+            System.out.println(tomorrow +">"+ today);
+        }
+        if (today.isBefore(tomorrow)) {
+            System.out.print("判断晚于：");
+            System.out.println(today +"<"+ tomorrow);
+        }
 
-//判断日期是早于还是晚于另一个日期
-LocalDate tomorrow = LocalDate.of(2019, 1, 15);
-if(tommorow.isAfter(today)){}
+        //在现有的时间上增加小时
+        LocalTime time = LocalTime.now();
+        LocalTime newTime = time.plusHours(2);
+        System.out.print("增加2时：");
+        System.out.println(newTime);
 
-if(today.isBefore(tomorrow)){}
+        //在现有的时间上增加一年
+        LocalDateTime timeA = LocalDateTime.now();
+        LocalDateTime plus = timeA.plusYears(1);
+        System.out.print("增加1年：");
+        System.out.println(plus);
 
-//在现有的时间上增加小时
-LocalTime time = LocalTime.now();
-LocalTime newTime = time.plusHours(2); 
+        //获取时间戳  时间戳内包含日期 和时间
+        Instant timestamp = Instant.now();
+        System.out.print("时间戳：");
+        System.out.println(timestamp);
 
-//一年后
-LocalDate nextYear = time.plus(1, YEARS);
+        //格式化 字符串转时间
+        String dayAfterTommorrow = "20140116";
+        LocalDate formatted = LocalDate.parse(dayAfterTommorrow,
+                DateTimeFormatter.BASIC_ISO_DATE);
+        System.out.print("DateTimeFormatter格式化：");
+        System.out.println(formatted);
 
-//获取时间戳  时间戳内包含日期 和时间
-Instant timestamp = Instant.now();
 
-//格式化 字符串转时间
-String dayAfterTommorrow = "20140116";
-LocalDate formatted = LocalDate.parse(dayAfterTommorrow,
-                        DateTimeFormatter.BASIC_ISO_DATE);
-//时间转字符串
-LocalDateTime arrivalDate  = LocalDateTime.now();
-try {
-    DateTimeFormatter format = DateTimeFormatter.ofPattern("MMM dd yyyy  hh:mm a");
-    String landing = arrivalDate.format(format);
-    System.out.printf("Arriving at :  %s %n", landing);
-} catch (DateTimeException ex) {
-    System.out.printf("%s can't be formatted!%n", arrivalDate);
-    ex.printStackTrace();
-}
-//时间差
+        //时间转字符串
+        LocalDateTime arrivalDate = LocalDateTime.now();
+        try {
+            DateTimeFormatter format = DateTimeFormatter.ofPattern("MMM dd yyyy  hh:mm a");
+            String landing = arrivalDate.format(format);
+            System.out.print("时间转字符串:");
+            System.out.println(landing);
+        } catch (DateTimeException ex) {
+            System.out.printf("%s 转换失败%n", arrivalDate);
+            ex.printStackTrace();
+        }
+        //时间差
 
-LocalDateTime start1 = LocalDateTime.now();
-LocalDateTime end1 = LocalDateTime.now();
-Duration.between(start1, end1).toMillis();
+        LocalDateTime start1 = LocalDateTime.of(2018, 01, 14,1,1,1);;
+        LocalDateTime end1 = LocalDateTime.now();
+        long l = Duration.between(start1, end1).toDays();
+        System.out.print("时间差(天)：");
+        System.out.println(l);
 
 
 
