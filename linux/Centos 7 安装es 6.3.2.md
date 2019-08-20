@@ -1,6 +1,6 @@
 # Centos 7 部署 es6.3.2
 
-# 前提
+## 前提
 
 Java 环境
 
@@ -42,4 +42,17 @@ su - elasticsearch
 cd elasticsearch-6.3.2/bin
 ./elasticsearch
 ```
+
+
+
+### Es 配置外网访问
+
+```shell
+cd ../config
+vim elasticsearch.yml
+#增加如下一行代码
+http.host: 0.0.0.0
+```
+
+
 
