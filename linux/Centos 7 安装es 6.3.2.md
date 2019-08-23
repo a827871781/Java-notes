@@ -34,10 +34,17 @@ groupadd elasticsearch
 useradd elasticsearch -g elasticsearch -p elasticsearch
 ```
 
+#### 更改文件夹属主和属组
+
+```shell
+cd /home/elasticsearch/
+chown -R elasticsearch:elasticsearch elasticsearch-6.3.2/
+```
+
 #### ES 配置外网访问及Java服务访问
 
 ```shell
-cd ../config
+cd /home/elasticsearch/elasticsearch-6.3.2/config
 vim elasticsearch.yml
 #增加如下一行代码 注意yml文件 需要在每一项前面加空格。
  http.host: 0.0.0.0
@@ -46,16 +53,29 @@ vim elasticsearch.yml
  network.host: 0.0.0.0
 ```
 
-#### 更改文件夹属主和属组
+#### 添加下面设置 elasticsearch 的配置
 
 ```shell
-chown -R elasticsearch:elasticsearch elasticsearch-6.3.2/
+ vim /etc/security/limits.conf 
+ elasticsearch hard nofile 65536
+ elasticsearch soft nofile 65536
+ elasticsearch soft    nproc           4096
+ elasticsearch hard    nproc           4096
 ```
+
+添加下面配置：
+
+```shell
+vim /etc/sysctl.conf
+vm.max_map_count=655360
+```
+
+
 
 #### 切换ES用户，启服务
 
 ```shell
-su - elasticsearch
+su  elasticsearch
 cd elasticsearch-6.3.2/bin
 ./elasticsearch
 ## 后台启动服务，如果不是后台启动服务，那么关闭终端 es 服务会停止。
@@ -176,7 +196,37 @@ cd /home/elasticsearch/logstash-6.3.2/bin/
 
 ### 
 
-### 遇到的问题
+## IK分词器
+
+### 插件安装
+
+```shell
+cd /home/elasticsearch/elasticsearch6.3.2
+./bin/elasticsearch-plugin install https://github.com/medcl/elasticsearch-analysis-ik/releases/download/v6.3.2/elasticsearch-analysis-ik-6.3.2.zip
+```
+
+### 重启 es
+
+1.  查找 es 进程
+
+```shell
+ps -ef | grep elastic
+```
+
+2.  终止进程 
+
+```shell
+#这里写查出的进程ID
+kill -9 XXX
+```
+
+3.  启动 es 后台运行
+
+
+
+
+
+## 遇到的问题
 
 #### 1.修改elasticsearch.yml ES 启动报错 权限不够
 
@@ -235,6 +285,8 @@ http://X.X.X.X:9200/
 
 #### 5.LogStash 错误：Logstash could not be started because there is already another instance usin
 
+其他报错 同样也可以查看lock 文件 如果存在 删除即可。
+
 这个错误是因为反复执行	`./logstash -f /home/elasticsearch/logstash-6.3.2/mysql-config/jdbc.conf`命令，导致加锁。
 
 解决方案：
@@ -247,29 +299,57 @@ ls -alh
 rm .lock
 ```
 
-## IK分词器
-
-### 插件安装
+#### 6.logstash同步多个表的数据
 
 ```shell
-cd /home/elasticsearch/elasticsearch6.3.2
-./bin/elasticsearch-plugin install https://github.com/medcl/elasticsearch-analysis-ik/releases/download/v6.3.2/elasticsearch-analysis-ik-6.3.2.zip
+#jdbc 文档结构 为这样 就可以正常执行
+input {
+    jdbc {
+    type => "A"
+
+    }
+    jdbc {
+    type => "B"
+
+    }
+}
+
+output {
+    if[type] == "A" {
+        elasticsearch {
+        document_type => "A"
+        }
+    }
+
+    if[type] == "B" {
+           elasticsearch {
+                document_type => "B" 
+           }
+    }
+}
 ```
 
-### 重启 es
+#### 7.索引 要在logstash 同步数据前创建。
 
-1.  查找 es 进程
+如果不在logstash 同步数据前创建 ，那么logstash会在同步时 自动判断并设置数据类型，并增加keyword设置，keyword是用来精确命中数据的，如果字段为 会导致分词查询 时不准确。
 
-```shell
-ps -ef | grep elastic
-```
+#### 8.ES 支持 距离排序。
 
-2.  终止进程 
+#### 9. 关于SpringBoot提供的 esTemplate 
 
-```shell
-#这里写查出的进程ID
-kill -9 XXX
-```
+如果你在用esTemplate前 就对 ES已经 相当熟悉，那么可以试着用一下。但是不建议。
 
-3.  启动 es 后台运行
+我的理解 esTemplate。就是JPA，如果你用的好 那么是真的强，方便快捷。如果不然，那么esTemplate 会让你很困扰。他会增加你的学习成本，ES  + esTemplate的 API。最重要的是，esTemplate 发出的请求 对于你不可见，即使你用es 比较熟练，也不一定能很快上手esTemplate。
+
+推荐就用一个HttpClint 工具。或者restTemplate ，这种能发http。请求的工具。
+
+自己构造查询条件所有环节都可控。
+
+这里不推荐 只是因为一个 原因，如果用 的话 对 刚接触ES的人来说，其实学习的不是ES  而是 esTemplate  API
+
+##### 总结：
+
+如果业务简单 就用，esTemplate ，不然的话 就用 HttpClint 工具。
+
+等到对es 有足够了解 再 esTemplate。
 
