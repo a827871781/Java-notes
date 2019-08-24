@@ -1,0 +1,139 @@
+### 建造模式
+
+将一个复杂的构建与其表示相分离，使得同样的构建过程可以创建不同的表示。
+
+1. 用户只需要给出指定复杂对象的类型和内容；
+2. 建造者模式负责按顺序创建复杂对象（把内部的建造过程和细节隐藏起来)
+
+```java
+
+public  abstract class Builder {
+
+    /**
+     *  第一步：装CPU
+     *  声明为抽象方法，具体由子类实现 
+     */
+    public abstract void  BuildCPU();
+
+    /**
+     *  第二步：装主板
+     *  声明为抽象方法，具体由子类实现 
+     */
+    public abstract void BuildMainboard();
+
+    /**
+     *  第三步：装硬盘
+     *  声明为抽象方法，具体由子类实现 
+     */
+    public abstract void BuildHD();
+
+    /**
+     * 返回产品的方法：获得组装好的电脑
+     * @return
+     */
+    public abstract Computer GetComputer();
+}
+
+public class Director{
+    /**
+     * 指挥装机人员组装电脑
+     * @param builder
+     */
+    public void Construct(Builder builder){
+         builder. BuildCPU();
+         builder.BuildMainboard();
+         builder. BuildHD();
+}
+ }
+
+//装机人员1
+  public class ConcreteBuilder extends   Builder{
+
+    Computer computer = new Computer();
+
+    @Override
+    public void  BuildCPU(){
+        computer.Add("组装CPU");
+    }  
+    @Override
+    public void  BuildMainboard(){
+       computer.Add("组装主板") ;
+    }  
+    @Override
+    public void  BuildHD(){
+       computer.Add("组装主板") ;
+    }  
+
+     @Override
+      public  Computer GetComputer(){
+      return computer ;
+    }
+}
+
+
+public class Computer{
+
+    /**
+     * 电脑组件的集合
+     */
+    private List<String> parts = new ArrayList<>();
+
+    /**
+     * //用于将组件组装到电脑里
+     * @param part
+     */
+    public void Add(String part){
+        parts.add(part);
+    }
+
+    public void Show(){
+      for (int i = 0;i<parts.size();i++){
+         System.out.println("组件"+parts.get(i)+"装好了");
+      }
+     System.out.println("电脑组装完成，请验收");
+    }
+
+}
+
+
+public class Main {
+    public static void main(String[] args){
+        //逛了很久终于发现一家合适的电脑店
+        //找到该店的老板
+        Director director = new Director();
+        //装机人员
+        Builder builder = new ConcreteBuilder();
+
+        //沟通需求后，老板叫装机人员去装电脑
+        director.Construct(builder);
+
+        //装完后，组装人员搬来组装好的电脑
+        Computer computer = builder.GetComputer();
+        //组装人员展示电脑给小成看
+        computer.Show();
+    }
+
+}
+
+```
+
+### 优点
+易于解耦:将产品本身与产品创建过程进行解耦，可以使用相同的创建过程来得到不同的产品。也就说细节依赖抽象。
+- 易于精确控制对象的创建:将复杂产品的创建步骤分解在不同的方法中，使得创建过程更加清晰
+- 易于拓展:增加新的具体建造者无需修改原有类库的代码，
+- 符合“开闭原则“:每一个具体建造者都相对独立，而与其他的具体建造者无关，因此可以很方便地替换- - 具体建造者或增加新的具体建造者，用户使用不同的具体建造者即可得到不同的产品对象。
+
+### 缺点
+建造者模式所创建的产品一般具有较多的共同点，其组成部分相似；如果产品之间的差异性很大，则不适合使用建造者模式，因此其使用范围受到一定的限制。
+
+如果产品的内部变化复杂，可能会导致需要定义很多具体建造者类来实现这种变化，导致系统变得很庞大。
+
+# 应用场景
+
+- 需要生成的产品对象有复杂的内部结构，这些产品对象具备共性；
+- 隔离复杂对象的创建和使用，并使得相同的创建过程可以创建不同的产品。
+
+` SpringBoot 中 RestTemplate 使用 RestTemplateBuilder创建RestTemplate实例
+JDK 中 StringBuilder和StringBuffer的append()方法使用了建造者模式。
+`
+
