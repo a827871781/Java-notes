@@ -11,7 +11,7 @@ import requests
 def main():
     fileName =  sys.argv[1]
     url = 'https://sm.ms/api/upload'
-    file_obj=open('C:\\Users\\Administrator\\Desktop\\'+fileName,'rb')  
+    file_obj=open('/Users/syz/Desktop/'+fileName,'rb')
     files  = {'smfile':file_obj}
     r = requests.post(url, data=None, files=files)
     import json
