@@ -1,9 +1,9 @@
 # 调教Mac Idea Win键盘 快捷键
-第一步先改键位：
+**第一步先改键位：**
   **alt = command
   win = option
   ctrl = control**	
-  第二部
+
 ## alt
 **alt+D：复制当前代码到下一行，在project视图下，选中文件，就是文件对比.**
 alt+E：打开最近访问的文件；alt+shift+E：最近编辑过的文件.  
