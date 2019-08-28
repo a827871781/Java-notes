@@ -49,7 +49,7 @@ vim elasticsearch.yml
 #增加如下一行代码 注意yml文件 需要在每一项前面加空格。
  http.host: 0.0.0.0
  http.port: 9200
-#Java 访问9300端口 
+#Java 访问9300端口  ，可有可无，如果是 使用 Springboot esTemplate 的话 必须要有
  network.host: 0.0.0.0
 ```
 
@@ -78,10 +78,16 @@ vm.max_map_count=262144
 
 ```shell
 su  es
-cd elasticsearch-6.3.2/bin
+cd /home/elasticsearch/elasticsearch-6.3.2/bin/
 ./elasticsearch
-## 后台启动服务，如果不是后台启动服务，那么关闭终端 es 服务会停止。
+# 测试是否启动成功
+curl 127.0.0.1:9200
+
+# 后台启动服务，如果不是后台启动服务，那么关闭终端 es 服务会停止。
 ./elasticsearch -d
+# 查看日志
+tail -f /home/elasticsearch/elasticsearch-6.3.2/logs/elasticsearch.log
+
 ```
 
 
