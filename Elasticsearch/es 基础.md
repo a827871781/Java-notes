@@ -137,7 +137,19 @@ PUT /${indexName}/
 
 不过不建议，默认会在 type 为 text 的字段上 + kayword。
 
+#### keyword 和 text 区别
+
+这两个字段都可以存储字符串使用，但建立索引和搜索的时候是不太一样的
+
+keyword：存储数据时候，不会分词建立索引
+
+text：存储数据时候，会自动分词，并生成索引（这是很智能的，但在有些字段里面是没用的，所以对于有些字段使用text则浪费了空间）。
+
 ### GET API
+
+#### _search
+
+全文搜索： 无 keyword 修饰，字段才可以用 全文搜索。
 
 ```js
 //搜索全部
@@ -149,6 +161,8 @@ GET ${indexName}/${typeName}/_search
 //根据 Id 获取
 GET ${indexName}/${typeName}/${id}
 //查询${fieldNamA}包含abc1的商品,同时按照${fieldNamB}降序排序
+//全文搜索，会先被拆解，建立倒排索引
+//在查询是，会根据不同分词的命中，而展示数据。
 GET ${indexName}/${typeName}/_search
 {
     "query" : {
@@ -174,7 +188,7 @@ GET ${indexName}/${typeName}/_search
   "_source": ["${fieldNamA}", "${fieldNamC}"]
 }
 
-搜索商品名称包含yagao，而且售价大于25元的商品
+//搜索商品名称包含yagao，而且售价大于25元的商品
 //搜索${fieldNamA}包含xx，而且${fieldNamB}大于25
 GET ${indexName}/${typeName}/_search
 {
@@ -193,6 +207,106 @@ GET ${indexName}/${typeName}/_search
         }
     }
 }
+//短语搜索
+//全文检索相对应，相反，全文检索会将输入的搜索串拆解开来，去倒排索引里面去一一匹配，只要能匹配上任意一个拆解后的单词，就可以作为结果返回
+//phrase search，要求输入的搜索串，必须在指定的字段文本中，完全包含一模一样的，才可以算匹配，才能作为结果返回
+GET ${indexName}/${typeName}/_search
+{
+    "query" : {
+        "match_phrase" : {
+            "${fieldNamB}" : "xx"
+        }
+    }
+}
+
 
 
 ```
+
+#### aggs
+
+聚合查询字段的 type 要有如下 修饰。
+
+```json
+//fielddata:
+//将文本field的fielddata属性设置为true
+PUT ${indexName}/_mapping/${typeName}
+{
+  "properties": {
+    "${fieldNamB}": {
+      "type": "text",
+      "fielddata": true
+    }
+  }
+}
+//keyword:
+//在创建索引时声明keyword 类型
+"${fieldNamC}": {
+                    "type": "text",
+                     "fields": {
+                        "keyword": {
+                            "type": "keyword"
+                        }
+                    }
+                }
+```
+
+#### fielddata:
+
+当字段被排序，聚合或者通过脚本访问时这种数据结构会被创建。它是通过从磁盘读取每个段的整个反向索引来构建的，然后存存储在java的堆内存中。fileddata默认是不开启的。Fielddata可能会消耗大量的堆空间，尤其是在加载高基数文本字段时。一旦fielddata已加载到堆中，它将在该段的生命周期内保留。此外，加载fielddata是一个昂贵的过程，可能会导致用户遇到延迟命中。
+
+#### keyword:
+
+不会分词，节省空间，提高查询效率。不能分词查询。
+
+
+
+```js
+//聚合计算${fieldNamB}字段内重复出现的字符数量  对比 SQL group by ${fieldNamB}  count（${fieldNamB} ）
+GET ${indexName}/${typeName}/_search
+{
+  "aggs": {
+    "group_by_tags": {
+      "terms": { "field": "${fieldNamB}" }
+    }
+  }
+}
+// 聚合fieldNamB 字段 对 fieldNamC 求平均值
+//sql group by  聚合fieldNamB  avg(fieldNamC)
+GET ${indexName}/${typeName}/_search
+{
+    "size": 0,
+    "aggs" : {
+        "group_by_tags" : {
+            "terms" : { "field" : "${fieldNamB}" },
+            "aggs" : {
+                "avg_price" : {
+                    "avg" : { "field" : "${fieldNamC}"}
+                }
+            }
+        }
+    }
+}
+// 聚合fieldNamB 字段 对 fieldNamC 求平均值,并排序。
+//group by fieldNamB avg(fieldNamC) as temp 
+//order by temp desc
+GET ${indexName}/${typeName}/_search
+{
+    "size": 0,
+    "aggs" : {
+        "all_tags" : {
+            "terms" : { "field" : "${fieldNamB}", "order": { "${temp}": "desc" } },
+            "aggs" : {
+                "${temp}" : {
+                    "avg" : { "field" : "${fieldNamC}" }
+                }
+            }
+        }
+    }
+}
+//多字段聚合，那么就多字段 一级包一级 aggs计算。 
+
+
+```
+
+最后，如果一个字段分别需要全文搜索，及聚合查询，那么可以分成两个字段，内容一致，但是 type 不一样。

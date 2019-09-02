@@ -13,8 +13,8 @@ connection = pymysql.connect(host='x.x.x.x',
 
 def get_info(url):
     wb_data = requests.get(url)  # get方法中加入请求头
-	
-    wb_data.encoding = 'gb2312' # 中文可能会乱码。解决方案：去要爬的网站找编码 。如： <meta http-equiv="Content-Type" content="text/html; charset=gb2312"> 
+
+    wb_data.encoding = 'gb2312'  # 中文可能会乱码。解决方案：去要爬的网站找编码 。如： <meta http-equiv="Content-Type" content="text/html; charset=gb2312">
     soup = BeautifulSoup(wb_data.text, 'html.parser')  # 对返回的结果进行解析
     # soup = BeautifulSoup(wb_data.text, 'html.parser')  # 对返回的结果进行解析
     ranks = soup.select('#main > div.left.sc > div.elist > dl dd ul li')

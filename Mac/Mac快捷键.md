@@ -8,9 +8,21 @@ Alt + F3 打开控制台
 
 **ctrl + 7 打开 1password**
 
-ctrl +←/→ 切换 桌面 == 三指左右滑动
+ctrl +[ ：打开调度中心，多任务窗格，快速切换不同应用。
+
+ctrl +] ：打开同一应用窗格，快速切换一个应用的不同窗格。
 
 **Win + alt + 空格 进入 Finder**
+
+Caps_lock  + D ：桌面
+
+Caps_lock  + 空格 ：切换输入法
+
+Caps_lock  + [ ：向左切换桌面
+
+Caps_lock  + ] ：向右切换桌面
+
+
 
 在 Finder 中
 

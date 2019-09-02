@@ -1,0 +1,70 @@
+# alfred - ssh
+
+## 下载alfred - ssh
+
+**github 地址**：https://github.com/deanishe/alfred-ssh/
+
+**下载地址**：https://github.com/deanishe/alfred-ssh/releases/tag/v0.8.0
+
+![fb721fd4-cd4e-11e9-8177-acde48001122](https://i.loli.net/2019/09/02/CXB7OfHWQr6p8mu.png )
+
+## 安装 alfred 集成 Iterm2 配置
+
+## Iterm2 配置：
+
+![47196122-cd4f-11e9-b25b-acde48001122](https://i.loli.net/2019/09/02/liPr7Xd4uCx12DH.png )
+
+## Alfred配置
+
+首先在 Alfred 的 Features 页面，具体为 Alfred `Preferences → Features → Terminal/Shell` 将 Application 的值改为 Custom
+
+![82dfeb4a-cd4f-11e9-abe6-acde48001122](https://i.loli.net/2019/09/02/CKQUH35FOXnj2rJ.png )
+
+图内3 位置的文本不同版本 iterm 的代码有所不同。
+
+通过访问：
+
+https://github.com/stuartcryan/custom-iterm-applescripts-for-alfred/
+
+![d9905b0a-cd4f-11e9-9ce1-acde48001122](https://i.loli.net/2019/09/02/qZXLMpITEONSkw5.png )
+
+根据自己 iterm 的版本获取，如果不知道，就用 3.1.1
+
+复制命令在终端中输入。结果会自动复制到剪切板内，
+
+将代码粘贴到 3 的位置。
+
+
+
+## iterm 配置密码登录登陆
+
+实现密码登录的方法是通过 `openssh` 的 `ssh config` 的功能。具体操作为～/.ssh/config，如果不存在，可以新建一个
+
+```shell
+vim ~/.ssh/config
+
+# host 别名  HostName ip ，User 用户名
+Host aliyun  
+  HostName 192.168.1.1
+  User root
+  Port 22
+```
+
+保存退出。这时在 *iTerm2* 中就可以输入 `ssh aliyun`, 回车 然后输入密码。注意，这时候已经不用输入 ssh root@192.168.1.1，只要输入密码就登录上了。
+
+## iterm设置免密登录
+
+方法是使用 `ssh-copy-id` 功能，原理是将本机的密钥复制到远程要连接的机器上，从而授权连接。iterm 终端输入：
+
+```shell
+ssh-keygen
+#输入完 就一路回车就行。
+```
+
+### 复制密钥到远程目的服务器
+
+```shell
+#   demouser@192.168.1.1      root:用户名   ，192.168.1.1 ： ip
+ssh-copy-id -i root@192.168.1.101
+```
+

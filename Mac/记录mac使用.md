@@ -4,17 +4,27 @@
 
 
 
-| 名称            | 功能             |
-| --------------- | ---------------- |
-| Atom            | 文本编辑器       |
-| Scroll Reverser | 鼠标滚动         |
-| karabiner       | 外接键盘时改键   |
-| iterm2          | 吊炸天的终端工具 |
-| ipaste          | 剪贴板神器       |
-| xmind           | 思维导图         |
-| typora          | mackdown         |
-|                 |                  |
-|                 |                  |
+| 名称                                               | 功能                                 |
+| -------------------------------------------------- | ------------------------------------ |
+| Atom                                               | 文本编辑器                           |
+| Scroll Reverser                                    | 鼠标滚动                             |
+| karabiner                                          | 外接键盘时改键                       |
+| iterm2                                             | 吊炸天的终端工具                     |
+| paste                                              | 剪贴板神器                           |
+| xmind                                              | 思维导图                             |
+| typora                                             | mackdown                             |
+| https://github.com/sindresorhus/quick-look-plugins | 增强预览功能，                       |
+| contexts                                           | app 切换                             |
+| istat menus                                        | mac 状态栏工具，查看电脑状态         |
+| iText                                              | orc，截图识字，并翻译                |
+| 1password                                          | 密码记录                             |
+| CheatSheet                                         | 快捷键提示工具                       |
+| magent                                             | 分屏工具                             |
+| NewFileMenu                                        | 右键增强工具，快速各种格式新建文件。 |
+|                                                    |                                      |
+|                                                    |                                      |
+|                                                    |                                      |
+|                                                    |                                      |
 
 
 
