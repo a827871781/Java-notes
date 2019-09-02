@@ -110,6 +110,10 @@ https://github.com/deanishe/alfred-fakeum
 
 默认启动关键字是：`ssh`。默认情况下，在选中的 SSH 链接上直接回车后就会在终端中访问对应的 SSH 服务器。
 
-### 地址
+### 地址：
 
 https://github.com/deanishe/alfred-ssh/
+
+### 配置方法：
+
+[**alfred 集成 ssh+iTerm2 实现一步登录服务器**](https://github.com/a827871781/Java-notes/blob/master/my-alfred-workflow/alfred 集成 ssh%2BiTerm2 实现一步登录服务器.md)

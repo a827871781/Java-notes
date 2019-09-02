@@ -209,6 +209,8 @@ elasticsearch {
 cd /home/elasticsearch/logstash-6.3.2/bin/
 
 ./logstash -f /home/elasticsearch/logstash-6.3.2/mysql-config/jdbc.conf
+#后台运行 原命令前面加 nohup+空格  后面 +&
+nohup ./logstash -f /home/elasticsearch/logstash-6.3.2/mysql-config/jdbc.conf&
 ```
 
 ### 
