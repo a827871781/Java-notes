@@ -48,6 +48,12 @@ Ctrl+H：显示当前类的子类。
 **Ctrl+ENTER 相当于 alt+N**
 **Ctrl + D debug 启动**
 
+**Ctrl + A 光标移动至行头**
+
+**Ctrl + E 光标移动至尾**
+
+
+
 
 
 ## win
@@ -59,7 +65,9 @@ Ctrl+H：显示当前类的子类。
 
 ## caps_lock
 
-**caps_lock+w：选取所在区块代码（可重复点击，选取更大的区块）我自己改了。这个常用，且方便按**  
+**caps_lock+1：选取所在区块代码（可重复点击，选取更大的区块）我自己改了。这个常用，且方便按**  
+
+**caps_lock+2：反选选所在区块代码，配合caps_lock+1 使用** 
 
 **caps_lock+e：向右移动一个单词**
 
@@ -81,6 +89,9 @@ Ctrl+H：显示当前类的子类。
 **alt+shift+O：打开文件**   
 
 **alt + shift + u 大小写切换**
+
+**alt + shift + f   搜索文件内内容**
+
 **alt + shift + 回车 自动补全结束符“；”**
 **Ctrl + Win + o 优化 import**
 **Ctrl + Win + I 自动缩进线**
