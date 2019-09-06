@@ -183,3 +183,17 @@ http://www.packal.org/workflow/uuid-generator-0
 #### 地址：
 
 http://www.packal.org/workflow/toggle-wifi
+
+### Hidden Files
+
+#### 功能：
+
+可在 Alfred 上隐藏和显示文件夹
+
+#### 使用：
+
+默认启动关键字是：`hidden`。
+
+#### 地址：
+
+http://www.packal.org/workflow/toggle-hidden-files
