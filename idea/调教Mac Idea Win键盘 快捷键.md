@@ -16,6 +16,7 @@
 **alt+D：复制当前代码到下一行，在project视图下，选中文件，就是文件对比.**
 alt+E：打开最近访问的文件；alt+shift+E：最近编辑过的文件.  
 alt+J：选择代码模板.  
+alt + L ： 跳转到指定行 
 **alt+N：新建类/生成代码（构造器、getter、setter、toString...）.**.     
 **alt+O：打开类.**   
 alt+F12：显示类成员

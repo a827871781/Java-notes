@@ -373,3 +373,40 @@ output {
 
 等到对es 有足够了解 再 esTemplate。
 
+
+
+#### 10. elasticsearch 启动 就提示 kill 
+
+可能是因为jvm 内存的原因:
+
+如果是个人服务器,搭建es 就是为了学习,那么可以配置
+
+```shell
+vim /home/elasticsearch/elasticsearch-6.3.2/config/jvm.options
+#将
+#-Xms1g
+#-Xmx1g
+#改为
+-Xms512m
+-Xmx512m
+```
+
+真正业务的话:
+
+```shell
+#将
+#-Xms1g
+#-Xmx1g
+#改为
+-Xms4g
+-Xmx4g
+```
+
+
+
+##### 总结：
+
+如果业务简单 就用，esTemplate ，不然的话 就用 HttpClint 工具。
+
+等到对es 有足够了解 再 esTemplate。
+

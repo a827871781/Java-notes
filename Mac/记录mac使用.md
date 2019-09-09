@@ -48,12 +48,15 @@ ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/
 
 #### homebrew 安装的软件
 
-| 名称       | 功能         |
-| ---------- | ------------ |
-| autojump   | zsh 跳转插件 |
-| node       |              |
-| git-flow   | git 工作流   |
-| curl       | 下载         |
-| subversion | svn          |
-| python     | 脚本语言     |
+| 名称                    | 功能         |
+| ----------------------- | ------------ |
+| autojump                | zsh 跳转插件 |
+| node                    |              |
+| git-flow                | git 工作流   |
+| curl                    | 下载         |
+| subversion              | svn          |
+| python                  | 脚本语言     |
+| zsh-syntax-highlighting | zsh 高亮插件 |
+|                         |              |
+|                         |              |
 

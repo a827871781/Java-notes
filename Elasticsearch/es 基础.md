@@ -310,3 +310,13 @@ GET ${indexName}/${typeName}/_search
 ```
 
 最后，如果一个字段分别需要全文搜索，及聚合查询，那么可以分成两个字段，内容一致，但是 type 不一样。
+
+### 删除一个 type 下所有数据
+
+```http
+post http://192.168.1.7:9200/${indexName}/${typeName}/_delete_by_query/
+{"query":{"match_all":{}}}
+```
+
+
+
