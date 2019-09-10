@@ -367,14 +367,6 @@ output {
 
 这里不推荐 只是因为一个 原因，如果用 的话 对 刚接触ES的人来说，其实学习的不是ES  而是 esTemplate  API
 
-##### 总结：
-
-如果业务简单 就用，esTemplate ，不然的话 就用 HttpClint 工具。
-
-等到对es 有足够了解 再 esTemplate。
-
-
-
 #### 10. elasticsearch 启动 就提示 kill 
 
 可能是因为jvm 内存的原因:
@@ -402,7 +394,9 @@ vim /home/elasticsearch/elasticsearch-6.3.2/config/jvm.options
 -Xmx4g
 ```
 
+#### 11.[ERROR] [Ruby-0-Thread-1]: sourceloader - No configuration found in the configured sources.
 
+把 **jdbc.conf**文件放在**logstash的/config**目录下，这个问题就解决了。
 
 ##### 总结：
 

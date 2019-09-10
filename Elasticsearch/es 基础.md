@@ -320,3 +320,5 @@ post http://192.168.1.7:9200/${indexName}/${typeName}/_delete_by_query/
 
 
 
+
+
