@@ -241,6 +241,127 @@ kill -9 XXX
 
 3.  启动 es 后台运行
 
+## X-Pack 安装破解
+
+**由于在 elasticsearch 在 6.3 版本之后 x-pack 是默认安装好的，所以不再需要用户自己去安装**
+
+### 1.启动 elasticsearch 后通过 curl 启动 trial license
+
+```shell
+curl -H "Content-Type:application/json" -XPOST  http://127.0.0.1:9200/_xpack/license/start_trial?acknowledge=true
+
+#看到如下返回信息表示启用测试版成功
+{"acknowledged":true,"trial_was_started":true,"type":"trial"}
+```
+![c677f262-d43e-11e9-a42e-acde48001122](https://i.loli.net/2019/09/11/BW8TZkc9JgyIiLd.png )
+
+### 2.设置用户名密码
+
+```shell
+cd /home/elasticsearch/
+bin/elasticsearch-setup-passwords interactive
+#接下来 就是y 然后配置密码
+------------------------------------------------------
+可能会报错:
+Unexpected response code [403] from calling GET http://127.0.0.1:9200/_xpack/security/_authenticate?pretty
+It doesn't look like the X-Pack security feature is available on this Elasticsearch node.
+Please check if you have installed a license that allows access to X-Pack Security feature.
+
+ERROR: X-Pack Security is not available.
+解决方案:
+vim /home/elasticsearch/elasticsearch-6.3.2/config/elasticsearch.yml
+#增加如下配置,别忘了空格
+ xpack.security.transport.ssl.enabled: true
+```
+
+![b782ad5a-d458-11e9-bb76-acde48001122](https://i.loli.net/2019/09/11/wQTuKMRN3c4jXGm.png )
+
+### 3.测试登陆
+
+Chrome浏览器head 插件 登陆:
+
+用户名:elastic
+
+密码: 刚才 自己设置的
+
+### 4.破解x-pack
+
+6.3 版本以后  都默认安装 -pack 插件的.所以直接破解
+
+#### 替换x-pack-core-6.3.2.jar
+
+**x-pack-core-6.3.2.jar下载地址**
+
+链接:https://pan.baidu.com/s/1zV7B0d3yyA5iMGje2lfU_A  密码:gr20
+
+将x-pack-core-6.3.2.jar 文件 上传至/home/elasticsearch/ 文件夹下
+
+```shell
+cd /home/elasticsearch/
+#用下载的文件夹覆盖原有的jar 
+cp x-pack-core-6.3.2.jar /home/elasticsearch/elasticsearch-6.3.2/modules/x-pack/x-pack-core/
+```
+
+#### 获取 license 证书
+
+1.  https://license.elastic.co/registration 填些用户名，邮箱（重要，获取下载链接），Country 选择 China，其他信息随意填写
+
+2.  将邮箱内的文件夹下载
+
+3.  修改文件中的内容，将两个属性改为
+
+    将 "type":"basic" 替换为 "type":"platinum"    # 基础版变更为铂金版
+
+    将 "expiry_date_in_millis":1561420799999 替换为 "expiry_date_in_millis":3107746200000    # 1 年变为 50 年
+
+4.  使用 curl 替换 license (license.json 指的是刚刚下载修改属性后的证书，要开启 elasticsearch 服务
+
+    ```shell
+    vim /home/elasticsearch/elasticsearch-6.3.2/config/elasticsearch.yml
+    xpack.security.enabled: false
+    xpack.security.transport.ssl.enabled: false
+    
+    #重启es
+    #将刚才修改的license.json 上传至/home/elasticsearch/ 文件夹
+    cd /home/elasticsearch/
+    #替换 证书
+    curl -H "Content-Type: application/json" -XPUT 'http://127.0.0.1:9200/_xpack/license?acknowledge=true' -d @license.json
+    
+    #查看证书
+    curl -XGET http://127.0.0.1:9200/_license
+    
+    #开启校验
+    vim /home/elasticsearch/elasticsearch-6.3.2/config/elasticsearch.yml
+    xpack.security.enabled: true
+    xpack.security.transport.ssl.enabled: true
+    ```
+
+    
+
+### 5.增加x-pack后 logstash 配置文件改动
+
+```shell
+vim /home/elasticsearch/logstash-6.3.2/mysql-config/jdbc.conf
+
+
+
+
+output {
+	#输出到 elasticsearch 的配置，配置很简单，一看就懂，就不作说明了
+    elasticsearch {
+        hosts => ["127.0.0.1:9200"]
+       # ----- 增加部分------
+        #x-pack es 账号密码
+        user => "elastic"
+        password => "youpwd"
+        # -----------
+    }
+
+}
+```
+
+
+
 
 
 
@@ -398,9 +519,41 @@ vim /home/elasticsearch/elasticsearch-6.3.2/config/jvm.options
 
 把 **jdbc.conf**文件放在**logstash的/config**目录下，这个问题就解决了。
 
-##### 总结：
+#### 12. Exception when executing JDBC query {:exception=>#<Sequel::DatabaseError: Java::ComMysqlJdbcExceptionsJdbc4::CommunicationsException: The last packet successfully received from the server was 7,208,937 milliseconds ago.  The last packet sent successfully to the server was 7,208,936 milliseconds ago. is longer than the server configured value of 'wait_timeout'. You should consider either expiring and/or testing connection validity before use in your application, increasing the server configured values for client timeouts, or using the Connector/J connection property 'autoReconnect=true' to avoid this problem.>}
+Wed Sep 11 09:12:03 CST 2019 WARN: Establishing SSL connection without server's identity verification is not recommended. According to MySQL 5.5.45+, 5.6.26+ and 5.7.6+ requirements SSL connection must be established by default if explicit option isn't set. For compliance with existing applications not using SSL the verifyServerCertificate property is set to 'false'. You need either to explicitly disable SSL by setting useSSL=false, or set useSSL=true and provide truststore for server certificate verification.
+
+
+
+在执行logstash 同步sql的时候,可能会报出上面两个警告.解决方案:
+
+增加jdbc配置:
+
+**autoReconnect=true&useSSL=false**
+
+如下所示:
+
+jdbc_connection_string => "jdbc:mysql://xxxx?autoReconnect=true&useSSL=false&erverTimezone=UTC&zeroDateTimeBehavior=convertToNull"
+
+
+
+查看mysql 超时时间:
+
+```sql
+show variables like '%timeout%'
+
+#主要看这两个属性 单位是秒 ,
+#interactive_timeout
+#wait_timeout
+```
+
+
+
+我遇到这个问题 大概率 是因为SQL 关联表过多,结果太大,logstash 日志中SQL可以打印出来,但是es索引库内一条数据都没有.,我用同样的配置文件只是修改了sql语句,很快就执行完,没有警告.因此猜测可能是sql结果集太大,查询超时,导致警告.
+
+
+
+### 总结：
 
 如果业务简单 就用，esTemplate ，不然的话 就用 HttpClint 工具。
 
 等到对es 有足够了解 再 esTemplate。
-
