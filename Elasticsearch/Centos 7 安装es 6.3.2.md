@@ -544,6 +544,11 @@ show variables like '%timeout%'
 #主要看这两个属性 单位是秒 ,
 #interactive_timeout
 #wait_timeout
+
+#Linux 系统下，配置文件为路径 /etc/my.cnf
+# 10 小时  默认值均为 28800
+wait_timeout=36000  
+interactive_timeout=36000 
 ```
 
 
@@ -552,8 +557,5 @@ show variables like '%timeout%'
 
 
 
-### 总结：
 
-如果业务简单 就用，esTemplate ，不然的话 就用 HttpClint 工具。
 
-等到对es 有足够了解 再 esTemplate。
