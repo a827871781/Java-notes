@@ -215,10 +215,7 @@ elasticsearch {
     hosts => ["127.0.0.1:9200"]
     #！！！这里需要修改
     index => "x"
-     # 需要关联的数据库中有有一个id字段，对应索引的id号,这个就是你sql查出来 要有id字段，也可以改，就是你先要那个字段为document_id 那么这里就写那个字段。多个表聚合查询时，可以用N个id 在数据库用concat函数 拼接起来的字段 as id 保证唯一，方便以后做增量更新。
     document_id => "%{id}"
-    #！！！这里需要修改
-    document_type => "x"
     template_overwrite => true
    }
 
@@ -234,6 +231,8 @@ elasticsearch {
 ```shell
 cd /home/elasticsearch/logstash-6.3.2/bin/
 ./logstash -f /home/elasticsearch/logstash-6.3.2/mysql-config/jdbc.conf
+#多配置文件运行 mysql-config 这个文件夹下 所有的配置文件 都好执行,不用加*
+./logstash -f /home/elasticsearch/logstash-6.3.2/mysql-config/
 #后台运行 
 nohup ./logstash -f /home/elasticsearch/logstash-6.3.2/mysql-config/jdbc.conf&
 ```
@@ -466,7 +465,20 @@ cd /home/elasticsearch/kibana-6.3.2-linux-x86_64/bin/
 tail -f nohup.out
 ```
 
+### 想在 monitoring 页面显示到 logstash 的监控。需要在 logstash.yml 里配置 ：
 
+```shell
+xpack.monitoring.elasticsearch.url: "http://127.0.0.1:9200"
+
+xpack.monitoring.elasticsearch.username: "logstash_system" 
+
+xpack.monitoring.elasticsearch.password: "youpwd"
+
+```
+
+### Kibana汉化:
+
+https://github.com/anbai-inc/Kibana_Hanization/tree/master/old
 
 
 
@@ -562,13 +574,13 @@ input {
 output {
     if[type] == "A" {
         elasticsearch {
-        document_type => "A"
+       
         }
     }
 
     if[type] == "B" {
            elasticsearch {
-                document_type => "B" 
+           
            }
     }
 }

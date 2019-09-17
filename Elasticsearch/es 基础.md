@@ -94,7 +94,7 @@ query 不仅要找到匹配的文档，而且还要计算每个文档的相关�
 
 ### 索引API
 
-#### 创建索引
+#### 创建index + type
 
 ```js
 PUT /${indexName}/
