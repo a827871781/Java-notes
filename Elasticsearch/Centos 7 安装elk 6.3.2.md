@@ -240,7 +240,10 @@ nohup ./logstash -f /home/elasticsearch/logstash-6.3.2/mysql-config/jdbc.conf&
 ##### 停止
 
 ```shell
+# jps 或 ps
+jps
 ps -ef | grep logstash
+
 #找到es 的pid
 kill -9 logstashPid
 ```

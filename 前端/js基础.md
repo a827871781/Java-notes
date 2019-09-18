@@ -389,7 +389,6 @@ document.domain属性返回当前文档的域名，不包含协议和接口。�
 
 <script src="a.js" defer></script>
 <script src="b.js" defer></script>
-
 defer属性的运行流程如下。
 
 1. 浏览器开始解析 HTML 网页。
@@ -405,7 +404,6 @@ defer属性的运行流程如下。
 
 <script src="a.js" async></script>
 <script src="b.js" async></script>
-
 async属性的作用是，使用另一个进程下载脚本，下载时不会阻塞渲染。
 
 1. 浏览器开始解析 HTML 网页。
