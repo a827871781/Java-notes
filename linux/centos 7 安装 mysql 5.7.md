@@ -19,7 +19,7 @@ wget https://dev.mysql.com/get/mysql57-community-release-el7-11.noarch.rpm
 # 3.安装 MySQL 的 YUM 源
 
 ```shell
- rpm -ivh mysql57-community-release-el7-11.noarch.rpm
+rpm -ivh mysql57-community-release-el7-11.noarch.rpm
 ```
 
 # 4.检查 MySQL 的 YUM 源是否安装成功
@@ -115,8 +115,7 @@ flush privileges;
 
 'ERROR 1820 (HY000): You must reset your password using ALTER USER statement before executing this statement.' 需要让我们重置密码。
 
-SET PASSWORD = PASSWORD('你的密码');
-ALTER USER 'root'@'localhost' PASSWORD EXPIRE NEVER;
+alter user 'root'@'localhost' identified by '你的密码';  
 flush privileges;
 ```
 
