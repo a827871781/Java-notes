@@ -21,4 +21,4 @@
 
 **图 1：**
 
-![s1.png](https://i.loli.net/2019/08/27/yMfDF3AwvzcJU1q.png )
+![ca2abc3c-de7f-11e9-9ffe-acde48001122](https://i.loli.net/2019/09/24/1GAp8Vu3br5OzkU.png )
