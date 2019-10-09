@@ -84,7 +84,12 @@ nginx['listen_port'] = 80
 docker exec gitlab gitlab-ctl reconfigure
 #查看容器id
 docker ps 
+#重启
 docker restart Gitlab容器ID
+#启动
+docker start Gitlab容器ID
+#停止
+docker stop Gitlab容器ID
 ```
 
 ### 一点建议

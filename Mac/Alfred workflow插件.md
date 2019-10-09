@@ -197,3 +197,69 @@ http://www.packal.org/workflow/toggle-wifi
 #### 地址：
 
 http://www.packal.org/workflow/toggle-hidden-files
+
+
+
+### Reminders for Alfred 3
+
+#### 功能：
+
+可在 Alfred 上添加提醒事项
+
+#### 使用：
+
+默认启动关键字是：`r`。
+
+`r <some text>` : ` r lol `添加lol至提醒事项 , `<some text>`为提示的标题
+
+`r today <some text>`  :  今天加入一个标题为`<some text>`的提醒事项
+
+`r tomorrow <some text>`  :  明天加入一个标题为`<some text>`的提醒事项
+
+`r in <n> minutes <some text>`  :  n分钟后 提示 标题为`<some text>` 的提醒事项 ,`<n>`为数字
+
+`r in <n> hours <some text>`  :  n小时后 提示 标题为`<some text>` 的提醒事项
+
+`r on <data> <some text>`  :  指定日期`<data>` 提示 标题为`<some text>` 的提醒事项,`<data>`为日期,格式月/日/年,或者月-日-年
+
+`r on <dataTime> <some text>`  :  指定日期时间`<dataTime>` 提示 标题为`<some text>` 的提醒事项,`<dataTime>`为日期时间,格式月/日/年 时:分,或者月-日-年 时.分
+
+`r at <n>pm <some text>`  : 下午n点提醒
+
+`r at <n>am <some text>`  : 上午n点提醒
+
+`r next thursday at 15.30 <some text>`  : 下周4 ,15:30提醒
+
+
+
+`r help` 将显示一些内置示例。
+
+`r this` 将捕获当前应用程序并将其转换为提醒。
+
+支持的应用程序
+
+-   Adobe Acrobat (Pro/DX)
+-   Chromium
+-   Contacts
+-   Finder
+-   FoldingText
+-   Google Chrome
+-   Google Chrome Canary
+-   Mail
+-   Mailplane 3
+-   Microsoft PowerPoint
+-   Microsoft Word
+-   Safari
+-   TextEdit
+-   TextMate
+-   Vienna
+-   WebKit
+
+
+
+#### 地址：
+
+https://github.com/surrealroad/alfred-reminders
+
+
+
