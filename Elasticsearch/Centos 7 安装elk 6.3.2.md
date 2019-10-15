@@ -241,7 +241,7 @@ nohup ./logstash -f /home/elasticsearch/logstash-6.3.2/mysql-config/jdbc.conf&
 
 ```shell
 # jps 或 ps
-jps
+jps -l
 ps -ef | grep logstash
 
 #找到es 的pid
