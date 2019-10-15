@@ -263,3 +263,14 @@ https://github.com/surrealroad/alfred-reminders
 
 
 
+
+
+### JetBrains - Open Project - v3
+
+####   功能:
+
+打开切换 **JetBrains** 项目
+
+#### 地址：
+
+https://github.com/bchatard/alfred-jetbrains
