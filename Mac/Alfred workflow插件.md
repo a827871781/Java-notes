@@ -274,3 +274,21 @@ https://github.com/surrealroad/alfred-reminders
 #### 地址：
 
 https://github.com/bchatard/alfred-jetbrains
+
+
+
+### Pretty JSON
+
+#### 功能:
+
+json格式化
+
+#### 使用:
+
+默认启动关键字是：`json`。
+
+选中需要格式化的json 文本,然后输入 json 格式化  文本
+
+#### 地址:
+
+http://www.packal.org/workflow/pretty-json
