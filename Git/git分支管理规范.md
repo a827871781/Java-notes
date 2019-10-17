@@ -250,6 +250,10 @@ git flow feature finish <branch-name>
 ```shell
 #创建 release 分支 ,release 分支是使用版本号命名的
 git flow release start <branch-name>
+
+#发布release 分支到远端
+git flow release publish <branch-name>
+
 #完成一个 release 分支
 git flow release finish <branch-name>
 #该命令会把我们在当前分支的代码整合到 master和 develop 分支中
