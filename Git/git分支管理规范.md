@@ -240,6 +240,10 @@ master 和 develop 这两个分支被称为**长期分支** ，存在于项目�
 ```shell
 #创建 feature 分支 
 git flow feature start <branch-name>
+
+#发布feature 分支到远端
+git flow feature publish <branch-name>
+
 #完成一个 feature 分支
 git flow feature finish <branch-name>
 #该命令会把我们在当前分支的代码整合到‘develop’分支中去，之后，git-flow 会进行清理操作，删除当下完成的功能分支，将分支切换到‘develop’。
@@ -265,6 +269,10 @@ git flow release finish <branch-name>
 ```shell
 #创建 hotfix 分支 ,
 git flow hotfix start <branch-name>
+
+#发布 hotfix 分支到远端
+git flow hotfix publish <branch-name>
+
 #完成一个 hotfix 分支
 git flow hotfix finish <branch-name>
 
