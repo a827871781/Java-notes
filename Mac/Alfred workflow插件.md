@@ -292,3 +292,23 @@ json格式化
 #### 地址:
 
 http://www.packal.org/workflow/pretty-json
+
+
+
+
+
+
+
+### Password Generator
+
+#### 功能:
+
+密码生成
+
+#### 使用:
+
+默认启动关键字是：`pwgen`。
+
+#### 地址:
+
+https://github.com/deanishe/alfred-pwgen#installation
