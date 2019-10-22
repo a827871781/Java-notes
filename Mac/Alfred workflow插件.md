@@ -312,3 +312,28 @@ http://www.packal.org/workflow/pretty-json
 #### 地址:
 
 https://github.com/deanishe/alfred-pwgen#installation
+
+
+
+
+
+# Recent Documents
+
+#### 功能:
+
+快速打开最近访问的文档、文件夹、应用。
+快速打开当前应用的最近访问文件。
+
+#### 使用:
+
+输入`rd`，列出最近打开的各种文件。
+
+输入`rr`，列出当前激活应用的最近文档。
+
+输入`rf`，列出最近访问的文件夹。
+
+输入`rd`，列出最近打开的各种文件。
+
+#### 地址:
+
+https://github.com/mpco/AlfredWorkflow-Recent-Documents/blob/master/README_CN.md
