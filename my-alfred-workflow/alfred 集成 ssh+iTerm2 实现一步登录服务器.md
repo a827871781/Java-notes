@@ -68,3 +68,54 @@ ssh-keygen
 ssh-copy-id -i root@192.168.1.101
 ```
 
+
+
+配合shell 脚本 即可快速添加服务器地址
+
+
+
+
+
+```shell
+#!/bin/bash
+# 四个参数,分别对应
+#hostname   // ip地址  必填
+#Host   别名   默认值为 hostname
+#user   用户,默认值 root
+#port  端口号 默认值 22 
+#
+#
+#
+#
+ip=$1
+if [ ! ${ip} ]; then
+       echo "ip is miss"
+     exit 1
+fi
+
+name=$2
+if [ ! $2 ]; then
+    name=$ip
+fi
+
+user=$3
+port=$4
+
+if [ ! $3 ]; then
+    user='root'
+fi
+
+if [ ! $4 ]; then
+    port='22'
+fi
+
+echo "Host ${name}" >> /Users/syz/.ssh/config
+echo "  HostName ${ip}" >> /Users/syz/.ssh/config
+echo "  User ${user}" >> /Users/syz/.ssh/config
+echo "  Port ${port}" >> /Users/syz/.ssh/config
+
+cd /Users/syz/.ssh
+a='ssh-copy-id -i root@'
+eval $a$ip
+```
+
