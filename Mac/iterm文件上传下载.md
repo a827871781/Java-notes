@@ -36,8 +36,6 @@ chmod +x /usr/local/bin/iterm2-send-zmodem.sh /usr/local/bin/iterm2-recv-zmodem.
 
 [![iterm2-lrzsz](https://img.piegg.cn/iterm2-lrzsz.png)](https://img.piegg.cn/iterm2-lrzsz.png)
 
-
-
 重新启动 iTerm 之后，rz/sz 就应该可以正常使用了。
 
 # centos 7 安装lrzsz

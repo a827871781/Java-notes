@@ -50,8 +50,6 @@ http://mirrors.jenkins.io/war/?C=M;O=D
 
 ![1183d4dc-f600-11e9-b53d-acde48001122](https://i.loli.net/2019/10/24/SOKsZA2JmcTI3iF.png )
 
-
-
 ### 创建jenkins_home 文件夹并将文件上传至jenkins_home文件夹
 
 ```shell
@@ -71,7 +69,8 @@ java -jar jenkins.war --httpPort=8080
 #后台启动jenkins
 nohup java -jar jenkins.war --httpPort=8080&
 
-
+#关闭jenkins
+pkill -f jenkins.war
 ```
 
 **第一次启动jenkins 最好不要使用后台启动,因为jenkins 在第一次启动时会在控制台打印一个随机的密钥,这个是用来登陆的.如果是后台 你还需要去找日志文件**
@@ -90,21 +89,13 @@ ip + 端口
 
 ![2fb43dfa-f602-11e9-bb8e-acde48001122](https://i.loli.net/2019/10/24/SM28CwaY7teKTHy.png )
 
-
-
 ### 配置jenkins
 
 直接安装推荐的插件即可
 
 ![7c2e0ef4-f602-11e9-b3ba-acde48001122](https://i.loli.net/2019/10/24/4CHFR7W3IKdB2uX.png )
 
-
-
-
-
 #### 创建第一个管理员用户
-
-
 
 ## 配置 Git、JDK、Maven
 
@@ -116,8 +107,6 @@ ip + 端口
 
  ![36043818-f61b-11e9-abb7-acde48001122](https://i.loli.net/2019/10/24/JKZSHdlPe6o3Vc8.png )
 
-
-
 ### Git
 
 如果以安装git,就用`whereis git` 命令找到git安装目录
@@ -128,21 +117,35 @@ ip + 端口
 
 ![db6d0334-f620-11e9-ad56-acde48001122](https://i.loli.net/2019/10/24/rKbdS1IxaCJU4Mw.png )
 
-
-
 ### maven
 
 ![image-20191024130312984](/Users/syz/Library/Application Support/typora-user-images/image-20191024130312984.png)
+
+#### 登陆 jenkins 的后台管理: Manage Jenkins -> Global Tool Configuration 选择自己的配置文件
+
+![](https://i.loli.net/2019/10/25/jhFXAyt5ZScJNY2.png)
+
+
+
+#### 修改 Maven 下载依赖路径
+
+ Manage Jenkins -> Configure System -> Maven 项目配置 ->  全局 MAVEN_OPTS 输入 -Dmaven.repo.local=/opt/mvnRepository 
+
+eg: /opt/mvnRepository  是我的仓库路径
+
+
+
+![](https://i.loli.net/2019/10/25/tcHfJl9kEMrVXeS.png)
 
 ## 配置jenkins插件
 
 【**系统管理 -> 插件管理 -> 可选插件**】，搜索并安装以下插件：
 
-1.  `SSH` 插件 —— 用于 SSH 登录远程主机拉取代码或者部署服务；
-2.  `Publish Over SSH` 插件 —— 用于将项目部署到远程机器上（SSH 登录然后执行部署脚本）；
-3.  `Maven Integration` 插件 —— 用于创建一个 Maven 的构建项目；
-4.  `GitLab` 插件  —— 用于当 gitlab 有 push 时触发 jenkins 拉取代码和将构建状态发送回 GitLab
-5.  `Gitlab Hook` 插件—— 用于 gitlab 有 push 时触发 jenkins
+1. `SSH` 插件 —— 用于 SSH 登录远程主机拉取代码或者部署服务；
+2. `Publish Over SSH` 插件 —— 用于将项目部署到远程机器上（SSH 登录然后执行部署脚本）；
+3. `Maven Integration` 插件 —— 用于创建一个 Maven 的构建项目；
+4. `GitLab` 插件  —— 用于当 gitlab 有 push 时触发 jenkins 拉取代码和将构建状态发送回 GitLab
+5. `Gitlab Hook` 插件—— 用于 gitlab 有 push 时触发 jenkins
 
 ## 全局安全配置
 
@@ -151,19 +154,6 @@ ip + 端口
 
 `webhooks 与 jenkins 配合使用时提示：HTTPStatus403-Novalidcrumbwasincludedintherequest, 这是因为 jenkins 在 http 请求头部中放置了一个名为.crumb 的 token。在使用了反向代理，并且在 jenkins 设置中勾选了 “防止跨站点请求伪造（Prevent Cross Site Request Forgery exploits）” 之后此 token 会被转发服务器 apache/nginx 认为是不合法头部而去掉。导致跳转失败。`
 
-
-
 ## jenkins 配置插件下载速度慢,配置镜像
 
 https://blog.csdn.net/you227/article/details/81076032
-
-
-
-
-
-
-
-
-
-
-

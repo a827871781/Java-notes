@@ -34,8 +34,6 @@ https://github.com/stuartcryan/custom-iterm-applescripts-for-alfred/
 
 将代码粘贴到 3 的位置。
 
-
-
 ## iterm 配置密码登录登陆
 
 实现密码登录的方法是通过 `openssh` 的 `ssh config` 的功能。具体操作为～/.ssh/config，如果不存在，可以新建一个
@@ -68,13 +66,7 @@ ssh-keygen
 ssh-copy-id -i root@192.168.1.101
 ```
 
-
-
 配合shell 脚本 即可快速添加服务器地址
-
-
-
-
 
 ```shell
 #!/bin/bash
@@ -118,4 +110,3 @@ cd /Users/syz/.ssh
 a='ssh-copy-id -i root@'
 eval $a$ip
 ```
-

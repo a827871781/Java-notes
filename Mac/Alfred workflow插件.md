@@ -2,21 +2,17 @@
 
 ## 自带功能
 
-|  快捷键  |             功能             |
-| :------: | :--------------------------: |
-|    ！    |       执行 shell 命令        |
-|   lock   | 默认锁屏，修改为直接进入屏保 |
-| restart  |             重启             |
-| shutdown |             关机             |
-|  logout  |             登出             |
-|   quit   |           关闭 app           |
-|   hide   |          最小化app           |
-|          |                              |
-|          |                              |
-
-
-
-
+| 快捷键      | 功能             |
+|:--------:|:--------------:|
+| ！        | 执行 shell 命令    |
+| lock     | 默认锁屏，修改为直接进入屏保 |
+| restart  | 重启             |
+| shutdown | 关机             |
+| logout   | 登出             |
+| quit     | 关闭 app         |
+| hide     | 最小化app         |
+|          |                |
+|          |                |
 
 ## workflow 插件
 
@@ -28,17 +24,17 @@
 
 #### 使用：
 
--   `xt + 单词`：小驼峰命名法
--   `dt + 单词`：大驼峰命名法
--   `xh + 单词`：下划线命名法
--   `cl + 单词`：常量命名法
--   `zh + 单词`：中划线命名法
+- `xt + 单词`：小驼峰命名法
+- `dt + 单词`：大驼峰命名法
+- `xh + 单词`：下划线命名法
+- `cl + 单词`：常量命名法
+- `zh + 单词`：中划线命名法
 
 #### 地址：
 
 https://github.com/xudaolong/CodeVar
 
-###  terminalfinder
+### terminalfinder
 
 #### 功能：
 
@@ -46,14 +42,14 @@ https://github.com/xudaolong/CodeVar
 
 #### 使用：
 
--   `ft`：在**终端中**打开当前的**Finder**目录
--   `tf`：在 **Finder 中**打开当前**终端**目录
--   `fi`：在 **iTerm 中**打开当前的**Finder**目录
--   `if`：在 **Finder 中**打开当前的**iTerm**目录
--   `pt`：在 **Terminal 中**打开当前的**Path Finder**目录
--   `tp`：在**路径查找器中**打开当前**终端**目录
--   `pi`：在 **iTerm 中**打开当前的**Path Finder**目录
--   `ip`：在 **Path Finder 中**打开当前的**iTerm**目录
+- `ft`：在**终端中**打开当前的**Finder**目录
+- `tf`：在 **Finder 中**打开当前**终端**目录
+- `fi`：在 **iTerm 中**打开当前的**Finder**目录
+- `if`：在 **Finder 中**打开当前的**iTerm**目录
+- `pt`：在 **Terminal 中**打开当前的**Path Finder**目录
+- `tp`：在**路径查找器中**打开当前**终端**目录
+- `pi`：在 **iTerm 中**打开当前的**Path Finder**目录
+- `ip`：在 **Path Finder 中**打开当前的**iTerm**目录
 
 #### 地址
 
@@ -67,7 +63,7 @@ http://www.packal.org/workflow/terminalfinder
 
 #### 使用：
 
--   `tr + 要翻译的单词`：
+- `tr + 要翻译的单词`：
 
 **选中单词按后：**
 
@@ -85,8 +81,6 @@ option  + t ： 划词翻译
 
 https://github.com/xfslove/alfred-google-translate
 
-
-
 ### Kill Process
 
 #### 功能：
@@ -95,13 +89,11 @@ https://github.com/xfslove/alfred-google-translate
 
 #### 使用：
 
--   `kill + app 名`：可以输入不全，会自动推断
+- `kill + app 名`：可以输入不全，会自动推断
 
 #### 地址
 
 https://github.com/ngreenstein/alfred-process-killer
-
-
 
 ### Fakeum
 
@@ -111,10 +103,10 @@ https://github.com/ngreenstein/alfred-process-killer
 
 #### 使用：
 
--   `fake name`：名称
--   `fake email`：email
--   `fake date`：日期
--   `fake datetime`：日期时间
+- `fake name`：名称
+- `fake email`：email
+- `fake date`：日期
+- `fake datetime`：日期时间
 
 #### 地址
 
@@ -152,8 +144,6 @@ https://github.com/deanishe/alfred-ssh/
 
 http://www.packal.org/workflow/uuid-generator-0
 
-
-
 ### 切换外观模式
 
 #### 功能：
@@ -167,8 +157,6 @@ http://www.packal.org/workflow/uuid-generator-0
 #### 地址：
 
 [https://cdn.sspai.com/%E5%88%87%E6%8D%A2%E5%A4%96%E8%A7%82%E6%A8%A1%E5%BC%8F-Alfred.alfredworkflow.zip](https://cdn.sspai.com/切换外观模式-Alfred.alfredworkflow.zip)
-
-
 
 ### Toggle Wifi
 
@@ -197,8 +185,6 @@ http://www.packal.org/workflow/toggle-wifi
 #### 地址：
 
 http://www.packal.org/workflow/toggle-hidden-files
-
-
 
 ### Reminders for Alfred 3
 
@@ -230,52 +216,42 @@ http://www.packal.org/workflow/toggle-hidden-files
 
 `r next thursday at 15.30 <some text>`  : 下周4 ,15:30提醒
 
-
-
 `r help` 将显示一些内置示例。
 
 `r this` 将捕获当前应用程序并将其转换为提醒。
 
 支持的应用程序
 
--   Adobe Acrobat (Pro/DX)
--   Chromium
--   Contacts
--   Finder
--   FoldingText
--   Google Chrome
--   Google Chrome Canary
--   Mail
--   Mailplane 3
--   Microsoft PowerPoint
--   Microsoft Word
--   Safari
--   TextEdit
--   TextMate
--   Vienna
--   WebKit
-
-
+- Adobe Acrobat (Pro/DX)
+- Chromium
+- Contacts
+- Finder
+- FoldingText
+- Google Chrome
+- Google Chrome Canary
+- Mail
+- Mailplane 3
+- Microsoft PowerPoint
+- Microsoft Word
+- Safari
+- TextEdit
+- TextMate
+- Vienna
+- WebKit
 
 #### 地址：
 
 https://github.com/surrealroad/alfred-reminders
 
-
-
-
-
 ### JetBrains - Open Project - v3
 
-####   功能:
+#### 功能:
 
 打开切换 **JetBrains** 项目
 
 #### 地址：
 
 https://github.com/bchatard/alfred-jetbrains
-
-
 
 ### Pretty JSON
 
@@ -293,12 +269,6 @@ json格式化
 
 http://www.packal.org/workflow/pretty-json
 
-
-
-
-
-
-
 ### Password Generator
 
 #### 功能:
@@ -312,10 +282,6 @@ http://www.packal.org/workflow/pretty-json
 #### 地址:
 
 https://github.com/deanishe/alfred-pwgen#installation
-
-
-
-
 
 # Recent Documents
 

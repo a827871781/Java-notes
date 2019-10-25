@@ -15,7 +15,7 @@ docker run --detach \
   --volume /mydata/gitlab/logs:/var/log/gitlab \
   --volume /mydata/gitlab/data:/var/opt/gitlab \
   gitlab/gitlab-ce:latest
-  
+
   #  --volume /mydata/gitlab/config:/etc/gitlab \
  # --volume /mydata/gitlab/logs:/var/log/gitlab \
   #--volume /mydata/gitlab/data:/var/opt/gitlab \
@@ -37,9 +37,9 @@ firewall-cmd --list-ports
 
 ### 访问 Gitlab
 
--   访问地址：http://服务器ip:1080/
+- 访问地址：http://服务器ip:1080/
 
--   由于 Gitlab 启动比较慢，所以在没有启动完成访问 Gitlab ，会出现如下错误。需要耐心等待 10 分钟左右，
+- 由于 Gitlab 启动比较慢，所以在没有启动完成访问 Gitlab ，会出现如下错误。需要耐心等待 10 分钟左右，
 
 ![img](http://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/blog/gitlab_screen_04.png)
 
@@ -99,4 +99,3 @@ docker stop Gitlab容器ID
 如果一直502报错,可以去看看配置文件是否有多余的配置.或者修改错了的配置.
 
 如果配置没问题,可以参考https://blog.csdn.net/snowglede/article/details/74911101解决问题.
-

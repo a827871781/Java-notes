@@ -1,10 +1,9 @@
 # 调教Mac Idea Win键盘 快捷键
+
 **第一步先改键位：**
   **左alt = command
   左win = option
-  左ctrl = control**	
-
-
+  左ctrl = control**    
 
 第二步：
 
@@ -13,6 +12,7 @@
 **caps_lock 大小写切换键，改为 command + option + control + shift** 
 
 ## alt
+
 **alt+D：复制当前代码到下一行，在project视图下，选中文件，就是文件对比.**
 alt+E：打开最近访问的文件；alt+shift+E：最近编辑过的文件.  
 alt+J：选择代码模板.  
@@ -33,9 +33,8 @@ alt + l 在当前文件跳转到某一行的指定处
 
 **alt + ：  打开 Project Settings **
 
-   
-
 ## shift
+
 shift+F6：重命名   
 shift+ESC：把焦点移至编辑窗口并隐藏工具窗口，F12 把焦点从编辑窗口移回最后一个工具窗口   
 shift * 2 次：搜索文件   
@@ -43,6 +42,7 @@ shift * 2 次：搜索文件
 **shift + 回车 开始新的一行**
 
 ## Ctrl(Control)
+
 **Ctrl+O：覆盖父类某方法，生成 override 方法**
 **Ctrl + I  实现方法（实现接口中的方法）**
 Ctrl+H：显示当前类的子类。   
@@ -53,16 +53,10 @@ Ctrl+H：显示当前类的子类。
 
 **Ctrl + E 光标移动至尾**
 
-
-
-
-
 ## win
 
 **win + del 从光标处删除至单词结尾。**
 **win + 退格 从光标处删除至单词开始。**
-
-
 
 ## caps_lock
 
@@ -82,9 +76,8 @@ Ctrl+H：显示当前类的子类。
 
 **caps_lock+k：向下移动一行**
 
-
-
 ## 复合键
+
 **Ctrl+shift + 空格：智能补全 可能会和手写输入冲突。具体要哪个自己斟酌**   
 **Ctrl+shift+R：执行 main 方法其实就是单击启动按钮**   
 **alt+shift+O：打开文件**   
@@ -116,12 +109,14 @@ alt+win+O：查找 method
 win+shift+C：查看近期工程修改记录
 
 ## 其他键
+
 F2/shift+F2：在高亮的语法错误中跳转
 F5：复制类
 **F3/shift + F3 :上一行，下一行。在搜索（alt + F）情况下，跳转到下一个搜索项，比较常用
 **
 
 ## 侧边栏窗口快捷键
+
 以下全是自定义的快捷键
 ![s1.png](https://i.loli.net/2019/08/27/OMBpyqgmVKkZo7u.png )
 **maven 窗口 :ctrl + alt + 1**
@@ -129,4 +124,3 @@ F5：复制类
 **datebase 窗口 :ctrl + alt + 3**
 **alibaba Cloud Explarer 窗口 :ctrl + alt + 4**
 **close Project ：Alt +F4  idea 窗口多开时，关闭其中一个窗口**
-
