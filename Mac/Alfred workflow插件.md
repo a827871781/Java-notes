@@ -303,3 +303,23 @@ https://github.com/deanishe/alfred-pwgen#installation
 #### 地址:
 
 https://github.com/mpco/AlfredWorkflow-Recent-Documents/blob/master/README_CN.md
+
+
+
+# Uninstall with AppCleaner
+
+#### 功能:
+
+配合AppCleaner App  更为干净的卸载 app
+
+#### 使用:
+
+输入`uninstall` + App名，列出最近打开的各种文件。
+
+
+
+#### 地址:
+
+AppCleaner下载地址 :http://freemacsoft.net/appcleaner/
+
+https://github.com/Louiszhai/tool/blob/master/workflow/AppCleaner.alfredworkflow?raw=true
