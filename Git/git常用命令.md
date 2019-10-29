@@ -8,9 +8,9 @@
 
 5.  `git push origin --delete <branchName>`   删除远端分支
 
-6.  `git reset –-soft ` 回退到某个版本，只回退了 commit 的信息，不会恢复到 index file 一级。如果还要提交，直接 commit 即可；
+6.  `git reset --soft HEAD~n` 回退到前N个版本，只回退了 commit 的信息，不会恢复到 index file 一级。如果还要提交，直接 commit 即可；
 
-7.  `git reset -–hard` 彻底回退到某个版本，本地的源码也会变为上一个版本的内容，撤销的 commit 中所包含的更改被冲掉；
+7.  `git reset -–hard HEAD~n` 彻底回退到N个版本，本地的源码也会变为上一个版本的内容，撤销的 commit 中所包含的更改被冲掉；
 
 8.  `git commit --amend -m  `  修改最后一次 commit 提交信息
 
@@ -20,7 +20,11 @@
 
 11.  `git show <commitId>` 查看  commitId 的提交内容
 
-  ​    
+12.  `git push origin [tagname]` 远端推送标签 
+
+13.  `git push origin --tags` 推送所有标签
+
+   ​    
 
 
 
@@ -30,5 +34,13 @@
 
 ```shell
 git config --global core.quotepath false
+```
+
+
+
+## 运行 Git 命令时，输出的结果会在新窗口打开，需输入 `q` 关闭窗口解决
+
+```shell
+git config --global core.pager ''
 ```
 
