@@ -114,7 +114,7 @@ F2/shift+F2：在高亮的语法错误中跳转
 F5：复制类
 **F3/shift + F3 :上一行，下一行。在搜索（alt + F）情况下，跳转到下一个搜索项，比较常用**
 
-**ctrl + shift + i : 结合宏,快速在接口上生成实现类方法,与ctrl + i 的区别在于,ctrl + I  是在子类中按的,我这个是在父类中按的 ,有兴趣可以参考**
+**ctrl + shift + i : 结合宏,快速在接口上生成实现类方法,与ctrl + i 的区别在于,ctrl + I  是在子类中按的,我这个是在父类中按的 ,有兴趣可以参考[idea宏功能](https://github.com/a827871781/Java-notes/blob/master/idea/idea 宏功能.md)**
 
 ## 侧边栏窗口快捷键
 
