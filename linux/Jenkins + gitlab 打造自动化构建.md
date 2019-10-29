@@ -81,7 +81,13 @@ echo "=========================>>>>>>>清除工作空间中原项目的工作空
 
 ![](https://i.loli.net/2019/10/24/6VcJeTIzkXpq5hj.png)
 
-![](https://i.loli.net/2019/10/25/4n9YFfq1Gd8DLVQ.png)
+![c046c7ba-f9ff-11e9-958d-acde48001122](https://i.loli.net/2019/10/29/6SJ1l438smOdrjp.png )
+
+参数说明
+Name : “系统管理> 系统设置” 设置的 SSH Sverver 的名字列表。
+Source files : 复制到运程机上的文件，相对 workspace 的路径，也支持表达式，如上图中的 “/target/xxx.jar”。
+Remove prefix : 文件复制时要过滤的目录，如上图中的 target 目录。
+Remote directory : 文件得到到远程机上的目录，此目录是相对于 “SSH Server” 中的 “Remote directory” 的，如果不存在将会自动创建。
 
 ### 运行任务
 
