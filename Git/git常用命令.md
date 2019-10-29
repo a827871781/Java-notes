@@ -44,3 +44,14 @@ git config --global core.quotepath false
 git config --global core.pager ''
 ```
 
+## git commit 提交时,部分乱码解决
+
+```shell
+#提交文件
+git config --global i18n.commitencoding utf-8
+#界面、
+git config --global gui.encoding utf-8 
+#提交日志 
+git config --global i18n.logoutputencoding utf-8
+```
+
