@@ -76,7 +76,8 @@ echo "=========================>>>>>>>清除工作空间中原项目的工作空
 
 ![](https://i.loli.net/2019/10/24/HnExgZ1qwGKFdty.png)
 
-在配置最后找到 “构建后操作”，选择 "Send build artifacts over SSH"
+在配置最后找到 “构建后操作”，选择 "**Send build artifacts over SSH**"
+
 
 ![](https://i.loli.net/2019/10/24/6VcJeTIzkXpq5hj.png)
 

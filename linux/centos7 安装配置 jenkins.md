@@ -22,7 +22,9 @@ java -version
 #### mavn
 
 ```shell
-cd /usr/local/maven3
+cd /usr/local/
+mkdir maven3
+cd maven3
 wget http://mirror.bit.edu.cn/apache/maven/maven-3/3.6.1/binaries/apache-maven-3.6.1-bin.tar.gz
 tar vxf apache-maven-3.6.1-bin.tar.gz
 ```
@@ -146,6 +148,7 @@ eg: /opt/mvnRepository  是我的仓库路径
 3. `Maven Integration` 插件 —— 用于创建一个 Maven 的构建项目；
 4. `GitLab` 插件  —— 用于当 gitlab 有 push 时触发 jenkins 拉取代码和将构建状态发送回 GitLab
 5. `Gitlab Hook` 插件—— 用于 gitlab 有 push 时触发 jenkins
+6. `Git Parameter`插件 —— 用于指定分支构建(不能自动化)
 
 ## 全局安全配置
 

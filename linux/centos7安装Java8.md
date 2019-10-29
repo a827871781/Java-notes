@@ -4,6 +4,8 @@ https://www.oracle.com/java/technologies/jdk8-downloads.html
 
 下载文件名为:jdk-8u221-linux-x64.tar.gz的文件
 
+
+
 # 2.解压
 
 ```shell
