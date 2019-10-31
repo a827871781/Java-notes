@@ -6,9 +6,17 @@
 - 单线程操作，避免频繁的上下文切换。
 - 采用非阻塞的IO多路复用机制
 
-**redis的数据类型：**
+**redis的数据类型及常见使用场景：**
 
-String、hash、list（底层双向链表）、set、sorted set
+String —— 字符串 : 简单的 key-value 类型，value 不仅可以是 String，也可以是数字
+
+Hash—— 字典 : 存储、读取、修改Bean属性
+
+List—— 列表 : 使用双端链表实现的 List,正常的list结构可以干的事都可以,并可以做消息队列
+
+Set—— 集合:一堆不重复值的组合, 去重
+
+Sorted Set—— 有序集合:  有序Set
 
 **redis的过期策略以及内存淘汰机制：**
 
