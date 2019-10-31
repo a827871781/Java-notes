@@ -1,34 +1,42 @@
+写在最初 : 
+
+Git 可以对任何命令使用 `--help` 选项，例如，`git stash --help`
+
 1. `git config --list`  检查已有配置信息
 
 2. `git status`  查看修改
 
-3. `git add .   `     添加当前目录的所有文件到暂存区
+3. `git add .   `     添加所有文件到暂存区
 
-4. `git commit -m [message]`     提交暂存区到仓库区
+4. `git add -p .` 添加暂存区之前,先将所有改动打印出来,再询问是否添加.
 
-5. `git push origin master`       将本地的 master 分支推送到 origin 主机的 master 分支
+5. `git commit -m [message]`     提交暂存区到仓库区
 
-6.  `git push origin --delete <branchName>`   删除远端分支
+6.  `git push origin <branchName>`       将本地的分支推送到 origin 主机的 分支,没有就新建
 
-7.  `git reset --soft HEAD~n` 回退到前N个版本，只回退了 commit 的信息，不会恢复到 index file 一级。如果还要提交，直接 commit 即可；
+7.  `git push origin --delete <branchName>`   删除远端分支
 
-8.  `git reset -–hard HEAD~n` 彻底回退到N个版本，本地的源码也会变为上一个版本的内容，撤销的 commit 中所包含的更改被冲掉；
+8.  `git reset --soft HEAD~n` 回退到前N个版本，只回退了 commit 的信息，不会恢复到 index file 一级。如果还要提交，直接 commit 即可；
 
-9.  `git commit --amend -m  `  修改最后一次 commit 提交信息
+9.  `git reset -–hard HEAD~n` 彻底回退到N个版本，本地的源码也会变为上一个版本的内容，撤销的 commit 中所包含的更改被冲掉；
 
-10.  `git commit --amend --no-edit`  修改最后一次提交的文件 
+10.  `git commit --amend -m  `  修改最后一次 commit 提交信息
 
-11.  `git log`  查看git提交记录,commit 为 提交的id
+11.  `git commit --amend --no-edit`  修改最后一次提交的文件 
 
-12.  `git show <commitId>` 查看  commitId 的提交内容
+12.  `git log`  查看git提交记录,commit 为 提交的id
 
-13.  `git push origin [tagname]` 远端推送标签 
+13.  `git show <commitId>` 查看  commitId 的提交内容
 
-14.  `git push origin --tags` 推送所有标签
+14.  `git push origin [tagname]` 远端推送标签 
+
+15.  `git push origin --tags` 推送所有标签
 
    ​    
 
 
+
+## 新建Git 仓库是,最后新建一个README.md文件,不然可能会导致许多命令都报错
 
 
 
