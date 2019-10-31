@@ -10,7 +10,7 @@
 
 String —— 字符串 : 简单的 key-value 类型，value 不仅可以是 String，也可以是数字
 
-Hash—— 字典 : 存储、读取、修改Bean属性
+Hash—— 字典 : 存储、读取、修改Bean/Json属性  
 
 List—— 列表 : 使用双端链表实现的 List,正常的list结构可以干的事都可以,并可以做消息队列
 
