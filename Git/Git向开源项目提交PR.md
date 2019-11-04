@@ -39,7 +39,7 @@ git分 本地仓库和远程仓库。
 
    ```shell
    git status #查看修改
-   git add ***.java # 将所有修改的java后缀的文件，暂存待提交
+   git add *.java # 将所有修改的java后缀的文件，暂存待提交
    git commit -m "XXX" # XXX 提交时要说的话 
    git push origin XXX # XXX 刚才新建的分支名 ，将当前分支推送到自己的远程仓库
    

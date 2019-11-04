@@ -258,10 +258,6 @@ cd /home/elasticsearch/logstash-6.3.2/bin/
 tail -f nohup.out
 ```
 
-
-
-
-
 ## IK分词器
 
 ### 插件安装
