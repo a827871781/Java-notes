@@ -106,24 +106,6 @@
 5. [排序](https://github.com/a827871781/Java-notes/blob/master/算法与数据结构/排序.md)
 
     
-### [Leetcode](https://github.com/a827871781/Java-notes/tree/master/Leetcode)
-#### [简单](https://github.com/a827871781/Java-notes/tree/master/Leetcode/简单)
-1. [038](https://github.com/a827871781/Java-notes/blob/master/Leetcode/简单/038.报数.md)
-2. [125](https://github.com/a827871781/Java-notes/blob/master/Leetcode/简单/125.验证回文串.md)
-3. [088](https://github.com/a827871781/Java-notes/blob/master/Leetcode/简单/088.合并 两个有序数组.md)
-4. [007](https://github.com/a827871781/Java-notes/blob/master/Leetcode/简单/007.整数翻转.md)
-5. [009](https://github.com/a827871781/Java-notes/blob/master/Leetcode/简单/009.回文数.md)
-6. [028](https://github.com/a827871781/Java-notes/blob/master/Leetcode/简单/028.实现strStr.md)
-7. [027](https://github.com/a827871781/Java-notes/blob/master/Leetcode/简单/027.移除元素.md)
-8. [058](https://github.com/a827871781/Java-notes/blob/master/Leetcode/简单/058.最后一个单词的长度.md)
-9. [067](https://github.com/a827871781/Java-notes/blob/master/Leetcode/简单/067.二进制求和.md)
-10. [029](https://github.com/a827871781/Java-notes/blob/master/Leetcode/简单/029.搜索插入位置.md)
-11. [013](https://github.com/a827871781/Java-notes/blob/master/Leetcode/简单/013.罗马数字转整数.md)
-12. [001](https://github.com/a827871781/Java-notes/blob/master/Leetcode/简单/001.两数之和.md)
-13. [026](https://github.com/a827871781/Java-notes/blob/master/Leetcode/简单/026.删除排序数组中的重复项.md)
-
-
-
 
 ### [Mac](https://github.com/a827871781/Java-notes/tree/master/Mac)
 1. [Mac快捷键](https://github.com/a827871781/Java-notes/blob/master/Mac/Mac快捷键.md)
