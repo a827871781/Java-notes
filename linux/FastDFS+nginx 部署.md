@@ -12,10 +12,6 @@
 
 建议范围：4KB < file_size <500MB）为载体的在线服务。支持线性扩容、负载均衡等。
 
- 
-
- 
-
 ## FastDFS从0到1
 
 安装FastDFS环境(为了简化，这里安装单机版的) 
@@ -118,8 +114,6 @@ ln -s /usr/bin/stop.sh         /usr/local/bin
 ln -s /usr/bin/restart.sh      /usr/local/bin
  
 ```
-
-
 
 ### 4. 配置fastDFS的Tracker
 

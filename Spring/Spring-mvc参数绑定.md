@@ -124,8 +124,6 @@ export const test = (data) => {
 
 对于传递参数为Date类型，可以在参数前添加@DateTimeFormat注解。如下：
 
-
-
 ```java
 @RequestMapping("/test")
 public void test(@DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss") Date date){} 
@@ -145,15 +143,9 @@ Public class Person{
 
 参考：
 
-
-
-<https://www.2cto.com/kf/201501/374062.html>
-
-
+https://www.2cto.com/kf/201501/374062.html
 
 <https://docs.spring.io/spring/docs/current/spring-framework-reference/web.html#mvc-ann-initbinder>
-
-
 
 枚举类型
 
@@ -174,25 +166,12 @@ mvc配置文件添加：
     </bean>
 ```
 
-
-
-参考：
-
-
-
-Spring Boot绑定枚举类型参数
-
-
-
-Spring MVC 自动为对象注入枚举类型
-
-
-
 #### json格式对象
 
-后台
+
 
 ```java
+//后台
 @RequestMapping(value = "introductionData", method = {RequestMethod.POST}) 
 @ResponseBody 
 public RestResult introductionData(@RequestBody SignData signData) { 
