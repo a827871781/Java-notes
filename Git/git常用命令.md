@@ -69,3 +69,10 @@ git config --global gui.encoding utf-8
 git config --global i18n.logoutputencoding utf-8
 ```
 
+## git 远端提交时需要账号密码
+
+```shell
+#配置后  第一次提交需要密码,之后就不要了
+git config --global credential.helper store
+```
+
