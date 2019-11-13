@@ -32,7 +32,7 @@ cd autojump
 
 最后把以下代码加入 `.zshrc`：
 
-```
+```shell
 [[ -s ~/.autojump/etc/profile.d/autojump.sh ]] && . ~/.autojump/etc/profile.d/autojump.sh
 ```
 
