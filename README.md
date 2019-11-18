@@ -1,5 +1,5 @@
 # Java-notes
-
+.
 平时工作累计和学习的总结
 
 ### [java基础](https://github.com/a827871781/Java-notes/tree/master/java基础)
