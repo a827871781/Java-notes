@@ -76,3 +76,9 @@ git config --global i18n.logoutputencoding utf-8
 git config --global credential.helper store
 ```
 
+## git使用vim 做编辑器
+
+```shell
+git config --global core.editor "vim"
+```
+
