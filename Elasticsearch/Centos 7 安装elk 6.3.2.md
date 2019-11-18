@@ -185,21 +185,22 @@ jdbc {
     jdbc_driver_class => "com.mysql.jdbc.Driver"
     jdbc_paging_enabled => "true"
     jdbc_page_size => "50000"
-    #mysql 文件，也可以直接写 SQL 语句在此处
-    #statement => "SELECT * from * "
+    #mysql 文件，也可以直接写 SQL 语句在此处  where id > :sql_last_value  很重要 增量的关键,如果是将SQL写在文件内,那么文件内的SQL 也需要 这 SQL 条件
+    #statement => "SELECT * from * where id >= :sql_last_value "
     # 去对应的文件位置编写sql代码。就用vim 就可以，千万别用自己电脑写完文件在上传到服务器 这种方式可能会引发编码问题
     statement_filepath => "/home/elasticsearch/jdbc.sql"
     #定时操作，和 crontab 一样
     schedule => "*/2 * * * *"
     type => "item"
     #是否记录上次执行结果，如果为真，将会把上次执行到的 tracking_column 字段的值记录下来，保存到
-    last_run_metadata_path => "/home/elasticsearch/logstash-6.3.2/config/last_id"
+    last_run_metadata_path => "/home/elasticsearch/logstash-6.3.2/config/last_time"
     record_last_run => "true"
     #是否需要记录某个 column 的值，如果 record_last_run 为真，可以自定义我们需要 track 的 column 名称，此时该参数就要为 true. 否则默认 track 的是 timestamp 的值.
     use_column_value => "true"
     #如果 use_column_value 为真，需配置此参数. track 的数据库 column 名，该 column 必须是递增的。
     
-    # 这个就用更新时间 来做增量更新 es 通过判断这个字段变化 来增量更新
+    # 这个就用更新时间 来做增量更新 es 通过限制查询范围来增量更新,最好为时间字段 也可以是数字字段.
+    #如果是多个表,可以通过多个表的最大的updatetime 来做更新
     tracking_column => "updateTime"
     #是否清除 last_run_metadata_path 的记录，如果为真那么每次都相当于从头开始查询所有的数据库记录
     clean_run => "false"
