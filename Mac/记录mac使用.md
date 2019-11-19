@@ -17,7 +17,7 @@ Mac os
 | iText                                              | orc，截图识字，并翻译                                |
 | 1password                                          | 密码记录                                             |
 | CheatSheet                                         | 快捷键提示工具                                       |
-| magent                                             | 分屏工具                                             |
+| magent                                             | 分屏工具.上手即用,缺点,无法在两个显示器间移动        |
 | NewFileMenu                                        | 右键增强工具，快速各种格式新建文件。                 |
 | 奇妙清单                                           | 待办清单，结合 alfred 很好用                         |
 | SwitchKey                                          | 自动切换输入法                                       |
@@ -27,7 +27,7 @@ Mac os
 | fdm                                                | 下载,速度相对慢一点,支持协议多一点,两个下载组合使用, |
 | BetterAndBetter                                    | 定义快捷键,和手势的                                  |
 | Picgo                                              | 图床上传                                             |
-|                                                    |                                                      |
+| moom                                               | 有第二块屏幕的最佳分屏软件.缺点需要自己配置          |
 |                                                    |                                                      |
 |                                                    |                                                      |
 |                                                    |                                                      |
