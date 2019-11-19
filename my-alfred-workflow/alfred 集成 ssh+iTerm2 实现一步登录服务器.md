@@ -66,7 +66,9 @@ ssh-keygen
 ssh-copy-id -i root@192.168.1.101
 ```
 
-配合shell 脚本 即可快速添加服务器地址
+## 快速添加服务器地址
+
+用以下shell 脚本 即可
 
 ```shell
 #!/bin/bash
@@ -110,3 +112,64 @@ cd /Users/syz/.ssh
 a='ssh-copy-id -i root@'
 eval $a$ip
 ```
+
+## 在终端中切换服务器
+
+用以下py脚本,并为该脚本配置别名.可以更加方便切换服务器.
+
+我将其定义为sshp
+
+通过输入sshp命令,可以打印出配置文件内所有服务器配置.格式为序号 + hostName
+
+通过输入序号,即可在终端内切换不同服务器..
+
+此脚本为alfred的补充,
+
+```python
+#!/usr/bin/env python
+# -*- coding: UTF-8 -*-
+import sys
+import os
+dict ={}
+dictA ={}
+def readFile(fileName):
+
+    flag=0
+    lastHost=""
+    file = open(fileName)
+    while 1:
+        line = file.readline()
+        if not line:
+            break
+        if flag:
+            dict[lastHost.split( )[1]]=line.split( )[1]
+            flag=0
+        if "Host " in line:
+            flag=1
+            lastHost = line
+
+
+def printDict():
+    index=1
+    for key in dict.keys():
+        dictA[index]=key
+        print('{} : {}'.format(index,key))
+        index=index+1
+
+
+if __name__ == '__main__':
+    readFile("/Users/syz/.ssh/config")
+    print("以下为当下所有可连接服务器:")
+    printDict()
+    print("请输入想要连接服务器的序号:")
+    a = int(sys.stdin.readline().strip())
+    str="ssh root@{}".format(dict[dictA[a]])
+    print(str)
+    os.system(str)
+```
+
+
+
+### 使用效果:
+
+![11aae7d4-0a9b-11ea-a8af-acde48001122](https://i.loli.net/2019/11/19/2HcaFEidPCb8mv1.png )

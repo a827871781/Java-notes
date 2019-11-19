@@ -89,7 +89,7 @@ source ~/.zshrc
 
 ```shell
 #命令行执行该命令
-wget -qO- https://raw.githubusercontent.com/a827871781/other/master/installVim.sh | sh -x
+wget -qO- https://raw.githubusercontent.com/a827871781/other/master/my-script/installVim.sh | sh -x
 ```
 
 一些vim的配置 及 NERDTree 插件一起安装 配置
