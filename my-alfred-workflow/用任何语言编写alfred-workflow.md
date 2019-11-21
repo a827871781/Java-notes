@@ -106,3 +106,9 @@ java这个需要稍微注意一下,java命令  绝对路径会报错,我就先�
 
 ![0130030e-0c2f-11ea-b7fb-acde48001122](https://i.loli.net/2019/11/21/3ltvDGu1X7CZj8A.png )
 
+```js
+let str = process.argv[2].toUpperCase()
+let msg = `{"items": [{"title": "${str}" }]}`
+console.log(msg)
+```
+
