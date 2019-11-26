@@ -112,3 +112,45 @@ let msg = `{"items": [{"title": "${str}" }]}`
 console.log(msg)
 ```
 
+## 个人的应用
+
+### 上传图片到sm图床,并转为markdown格式.
+
+https://github.com/a827871781/other/blob/master/my-script/fileUpload.py
+
+自动将剪切板内的图片上传至sm图床.不可以直接使用,图中绝对路径修改为.自己的路径就可以
+
+![9a08610a-0f56-11ea-b718-acde48001122](https://i.loli.net/2019/11/25/yIWLN9VMDETwcFY.png )
+
+#### alfre配置
+
+![0e836534-0f57-11ea-81bd-acde48001122](https://i.loli.net/2019/11/25/wOQHmNIgBrEoxai.png )
+
+```shell
+#注意脚本位置.绝对路径
+/usr/local/Cellar/python/3.7.4_1/bin/python3  ~/Documents/other/my-script/fileUpload.py 
+
+```
+
+
+
+#### 最终效果
+
+![336da206-0f57-11ea-bd18-acde48001122](https://i.loli.net/2019/11/25/rlSBiVu2EkHwMtj.png )
+
+### 将[]转为{}
+
+这个是因为我在LeetCode  刷题时,用例数组 总是 用[]表示,而java的数组是{}.所以写此脚本.
+
+https://github.com/a827871781/other/blob/master/my-script/replaceStr.py
+
+#### alfred
+
+```shell
+/usr/local/Cellar/python/3.7.4_1/bin/python3  ~/Documents/other/my-script/replaceStr.py 
+```
+
+#### 最终效果
+
+略
+
