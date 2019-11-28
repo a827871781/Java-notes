@@ -104,6 +104,9 @@ jsp
 ps -ef | grep elastic
 #找到es 的pid
 kill -9 esPid
+
+#最终版 停止命令
+kill -9 $(ps -ef|grep Elasticsearch | gawk '$0 !~/grep/ {print $2}' |tr -s '\n' ' ')
 ```
 
 #### 查看日志
