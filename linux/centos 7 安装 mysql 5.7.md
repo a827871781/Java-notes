@@ -3,7 +3,7 @@
 从 CentOS 7 系统开始，MariaDB 成为 yum 源中默认的数据库安装包。在 CentOS 7 及以上的系统中使用 yum 安装 MySQL 包将无法使用 MySQL。您可以选择使用完全兼容的 MariaDB，或依照本文介绍配置来继续使用 MySQL。
 
 ```shell
-yum -y remove mariadb*
+yum -y remove mariadb
 ```
 
 # 2.下载 MySQL 的 YUM 源
@@ -43,9 +43,7 @@ yum repolist all | grep mysql
 # 6.安装 MySQL
 
 ```shell
-yum install mysql-community-server
-
-#一直输 y 就可以了。
+yum -y install mysql-community-server
 ```
 
 # 7.启动 MySQL 服务
@@ -119,22 +117,27 @@ alter user 'root'@'localhost' identified by '你的密码';  
 flush privileges;
 ```
 
+ps:云服务器 记得将3306端口加入安全组
+
 # 11.启动/停止/重启
 
-## 启动方式
+## 启动
 
--   使用 service 启动：service mysqld start
--   使用 mysqld 脚本启动：/etc/inint.d/mysqld start
--   使用 safe_mysqld 启动：safe_mysqld&
+```shell
+systemctl mysqld start
+```
 
 ## 停止
 
--   使用 service 启动：service mysqld stop
--   使用 mysqld 脚本启动：/etc/inint.d/mysqld stop
--    mysqladmin shutdown 
+```shell
+systemctl mysqld stop
+```
+
+
 
 ## 重启
 
--   使用 service 启动：service mysqld restart
--   使用 mysqld 脚本启动：/etc/inint.d/mysqld restart
-    提问 编辑摘要
+```shell
+systemctl mysqld restart
+```
+
