@@ -40,10 +40,6 @@ Git 可以对任何命令使用 `--help` 选项，例如，`git stash --help`
 
 
 
-## 新建Git 仓库是,最后新建一个README.md文件,不然可能会导致许多命令都报错
-
-
-
 ## git 命令行 git status 时 中文乱码解决
 
 ```shell
