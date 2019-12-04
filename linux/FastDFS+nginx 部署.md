@@ -8,11 +8,13 @@
 
 使用场景:
 
-它主要解决了海量数据存储问题，特别适合以中小文件（
+它主要解决了海量数据存储问题，特别适合以中小文件
 
 建议范围：4KB < file_size <500MB）为载体的在线服务。支持线性扩容、负载均衡等。
 
 ## FastDFS从0到1
+
+当前环境centos 7 
 
 安装FastDFS环境(为了简化，这里安装单机版的) 
 
@@ -20,19 +22,19 @@
 注意：fastDFS目前只能在linux系统下使用，所以需要装备linux系统或安装虚拟机。一定      要先给linux做网络配置，如果是虚拟机就桥接网络，设置静态内网地址和网关。
 
 
-### 1. 简单配置
+### 一. 简单配置
 
 进入linux系统，先做一件事，修改hosts，将文件服务器的ip与域名映射(单机TrackerServer环境)，因为后面很多配置里面都需要去配置服务器地址，ip变了，就只需要修改hosts即可（此步可省）。
 
 ```shell
 vi /etc/hosts
 #增加如下一行，这是我的IP
-192.168.1.160 file.kbz.com
+192.168.1.160 file.xxx.com
 #如果要本机访问虚拟机，在C:\Windows\System32\drivers\etc\hosts中同样增加一行
  
 ```
 
-### 2. 下载安装 libfastcommon
+### 二. 下载安装 libfastcommon
 
 
 
@@ -85,7 +87,7 @@ ln -s /usr/lib64/libfdfsclient.so /usr/local/lib/libfdfsclient.so
 ln -s /usr/lib64/libfdfsclient.so /usr/lib/libfdfsclient.so
 ```
 
-### 3. 安装fastDFS 
+### 三. 安装fastDFS 
 
 ```shell
 #1) 下载fastDFS(或到https://github.com/happyfish100上下载最新版本)
@@ -115,15 +117,22 @@ ln -s /usr/bin/restart.sh      /usr/local/bin
  
 ```
 
-### 4. 配置fastDFS的Tracker
+### 四. 配置fastDFS的Tracker
+
+#### 1.配置tracker.conf
+
+进入 /etc/fdfs，复制 FastDFS 跟踪器样例配置文件 tracker.conf.sample，并重命名为 tracker.conf。
 
 ```shell
-#① 进入 /etc/fdfs，复制 FastDFS 跟踪器样例配置文件 tracker.conf.sample，并重命名为 tracker.conf。
 cd /etc/fdfs
 cp tracker.conf.sample tracker.conf
 vim tracker.conf
- 
-# ② 编辑tracker.conf ，标红的需要修改下，其它的默认即可。
+```
+
+#### 2.编辑tracker.conf 
+
+```shell
+#写的是比较重要部分,没写 基本就不用改
 # 配置文件是否不生效，false 为生效
 disabled=false
 # 提供服务的端口
@@ -132,110 +141,99 @@ port=22122
 base_path=/opt/fastdfs/tracker
 # HTTP 服务端口
 http.server_port=80
- 
- 
-# ③ 创建tracker基础数据目录，即base_path对应的目录
+
+```
+
+#### 3.创建tracker基础数据目录，即base_path对应的目录
+
+```shell
 mkdir -p /opt/fastdfs/tracker
- 
-# ④  防火墙中打开跟踪端口（默认的22122），如果是阿里云只需要安全组里的入方向配置阿里云的url/32规则即可。
- vim /etc/sysconfig/iptables
+```
+
+
+
+#### 4.防火墙中打开跟踪端口（默认的22122）
+
+
+```shell
+vim /etc/sysconfig/iptables
 #添加如下端口行：
 -A INPUT -m state --state NEW -m tcp -p tcp --dport 22122 -j ACCEPT
+ 
+#关闭防火墙：
+systemctl stop firewalld
+#安装|更新服务：
+yum install iptables-services
+#启动iptables:
+systemctl enable iptables
 ```
 
+如果是云只需要在安全组里的入方向配置云的规则。
 
+#### 5.启动Tracker
 
 ```shell
- #重启防火墙：
- service iptables restart
- 
- #如果是centOs7以上，或高版本linux，执行
- #关闭防火墙：
- systemctl stop firewalld
- #安装|更新服务：
- yum install iptables-services
- #启动iptables:
- systemctl enable iptables
+service fdfs_trackerd start
 ```
 
-
-
-
+#### 6.设置Tracker开机启动
 
 ```shell
-#然后执行上面的修改。
- 
-#⑤  启动Tracker(二选一,推荐第二种)
-#两种方式：
-#1：
-/etc/init.d/fdfs_trackerd start
-#2
- service fdfs_trackerd start
- 
-#⑥ 设置Tracker开机启动
- chkconfig fdfs_trackerd on
-
-
+chkconfig fdfs_trackerd on
 #或者：
 vim /etc/rc.d/rc.local
 #加入配置：
  
 /etc/init.d/fdfs_trackerd start 
- 
-# ⑦  tracker server 目录及文件结构 
+```
+
+#### 7.tracker server 目录及文件结构 
+
+```shell
 #${base_path}
 #  |__data
 #  |   |__storage_groups.dat：存储分组信息
 #  |   |__storage_servers.dat：存储服务器列表
 #  |__logs
 #  |   |__trackerd.log： tracker server 日志文件 
- 
- 
 ```
 
-### 5. 配置fastDFS的Storage
+
+
+### 五. 配置fastDFS的Storage
+
+#### 1.配置storage.conf
+
+进入 /etc/fdfs 目录，复制 FastDFS 存储器样例配置文件 storage.conf.sample，并重命名为 storage.conf
 
 ```shell
- 
-#① 进入 /etc/fdfs 目录，复制 FastDFS 存储器样例配置文件 storage.conf.sample，并重命名为 storage.conf
 cd /etc/fdfs
 cp storage.conf.sample storage.conf
 vim storage.conf
- 
-#② 编辑storage.conf，标红的需要修改，其它的默认
+```
+
+#### 2.编辑storage.conf
+
+```shell
 # 配置文件是否不生效，false 为生效
 disabled=false 
-# 指定此 storage server 所在 组(卷)
-group_name=group1
-# storage server 服务端口
-port=23000
- 
-# 心跳间隔时间，单位为秒 (这里是指主动向 tracker server 发送心跳)
-heart_beat_interval=30
+
+
  
 # Storage 数据和日志目录地址(根目录必须存在，子目录会自动生成)
 base_path=/opt/fastdfs/storage
  
-# 存放文件时 storage server 支持多个路径。这里配置存放文件的基路径数目，通常只配一个目录。
-store_path_count=1
+
+# 如果不配置 store_path0，那它就和 base_path 对应的路径一样。
+store_path0=/opt/fastdfs/file
  
-# 逐一配置 store_path_count 个路径，索引号基于 0。
-# 如果不配置 store_path0，那它就和 base_path 对应的路径一样。store_path0=/opt/fastdfs/file
- 
-# FastDFS 存储文件时，采用了两级目录。这里配置存放文件的目录个数。 
-# 如果本参数只为 N（如： 256），那么 storage server 在初次运行时，会在 store_path 下自动创建 N * N 个存放文件的子目录。
-subdir_count_per_path=256
+
  
 # tracker_server 的列表 ，会主动连接 tracker_server
-# 有多个 tracker server 时，每个 tracker server 写一行tracker_server=file.kbz.com:22122
+# 有多个 tracker server 时，每个 tracker server 写一行
+tracker_server=file.xxx.com:22122
 
 
-
-# 允许系统同步的时间段 (默认是全天) 。一般用于避免高峰同步产生一些问题而设定。
-
-sync_start_time=00:00
-
-sync_end_time=23:59
 # 访问端口
 
 http.server_port=80
@@ -243,18 +241,20 @@ http.server_port=80
 
  
 
-③ 创建Storage基础数据目录，对应base_path目录
+#### 3.创建Storage基础数据目录
 
 ```shell
  mkdir -p /opt/fastdfs/storage
   
 # 这是配置的store_path0路径
-# mkdir -p /opt/fastdfs/file
+ mkdir -p /opt/fastdfs/file
 ```
 
 
 
-④ 防火墙中打开存储器端口(默认的 23000) ，如果是阿里云只需要安全组里的入方向配置阿里云的url/32规则即可
+#### 4. 防火墙中打开存储器端口(默认的 23000) ，
+
+如果是云服务器只需要安全组里的入方向配置云服务器规则即可
 
 ```shell
  vim /etc/sysconfig/iptables
@@ -265,23 +265,29 @@ http.server_port=80
 #重启防火墙：
  service iptables restart
  
-#⑤ 启动 Storage
-service fdfs_storaged start
- 
-#查看Storage和Tracker是否在通信：
-/usr/bin/fdfs_monitor /etc/fdfs/storage.conf
+
 ```
 
-
-
-
+#### 5. 启动 Storage
 
 ```shell
+service fdfs_storaged start
 
- 
-#⑥ 设置 Storage 开机启动
- 
- chkconfig fdfs_storaged on
+
+#查看Storage和Tracker是否在通信：
+
+/usr/bin/fdfs_monitor /etc/fdfs/storage.conf
+
+```
+
+![4fcd3036-1193-11ea-bb53-acde48001122](https://i.loli.net/2019/11/28/reNI6qpTKasjZ8E.png )
+
+
+
+#### 6.设置 Storage 开机启动
+
+```shell
+chkconfig fdfs_storaged on
 #或者：
 #加入配置：
 /etc/init.d/fdfs_storaged start
@@ -289,11 +295,12 @@ service fdfs_storaged start
  
 ```
 
-### 6. 文件上传测试
+### 六. 文件上传测试
+
+##### 1.修改 Tracker 服务器中的客户端配置文件 
 
 ```shell
  
-#① 修改 Tracker 服务器中的客户端配置文件 
 cd /etc/fdfs
 cp client.conf.sample client.conf
 vim client.conf
@@ -301,35 +308,45 @@ vim client.conf
 # Client 的数据和日志目录
 base_path=/opt/fastdfs/client
 # Tracker端口
-tracker_server=file.kbz.com:22122
+tracker_server=file.xxx.com:22122
  
 #再为它创建目录：
 mkdir -p /opt/fastdfs/client
  
-#② 上传测试
+
+```
+
+
+
+##### 2.上传测试
+
+```shell
 #随便整个图片过来，在linux内部执行如下命令上传a2.jpg图片
 /usr/bin/fdfs_upload_file /etc/fdfs/client.conf a2.jpg
-#上传成功后返回文件ID号：group1/M00/00/00/wKgBoFw4TE-AGKvMAAA0aLoff8c194.jpg
+#上传成功后返回文件ID号
  
 #删除上传文件:
-
 /usr/bin/fdfs_delete_file /etc/fdfs/client.conf group1/M00/00/00/wKgBoFw4TE-AGKvMAAA0aLoff8c194.jpg
  
 格式：group/存储目录/两级子目录/fileid.文件后缀名（由客户端指定，主要用于区分文件类型）拼接而成
  
 ```
 
-### 7. 配置nginx
+![9e356d7e-11a2-11ea-88e0-acde48001122](https://i.loli.net/2019/11/28/mJgNLdrElsDAcGT.png )
 
-```sh
-如果不需要http形式的访问，可以跳过它。(¬_¬)
+
+
+### 七. 配置nginx
+
+如果不需要http形式的访问，可以跳过它。
 nginx只需要安装到StorageServer所在的服务器即可，用于访问文件。
 如果是安在tracker上主要是为了：提供http反向代理、负载均衡及缓存服务。
-```
+
+
 
  注：gcc、pcre-devel 、zlib、OpenSSL都要装全了，前面已经装全了。
 
-① 下载nginx
+#### 1.下载nginx
 
 ```shell
 wget -c https://nginx.org/download/nginx-1.14.2.tar.gz
@@ -337,32 +354,45 @@ tar zxvf nginx-1.14.2.tar.gz
 cd nginx-1.14.2
 #使用默认配置
 ./configure
- 
-# ② 编译、安装
+
+```
+
+#### 2.编译、安装
+
+```shell
 make
 make install
- 
-#③ 启动nginx
+```
+
+#### 3.启动nginx
+
+```shell
 cd /usr/local/nginx/sbin/
 ./nginx
+
 #其它：
 # ./nginx -s stop ，# ./nginx -s quit ， # ./nginx -s reload
-#④ 设置开机启动
+```
+
+#### 4.设置开机启动
+
+```shell
 vim /etc/rc.local
 #添加一行：
 /usr/local/nginx/sbin/nginx
-```
 
-
-
-```shell
 # 设置执行权限
 chmod 755 /etc/rc.d/rc.local
 
 #查看ngin版本和模块：
 /usr/local/nginx/sbin/nginx -V
 
-#⑤ 防火墙中打开nginx端口（默认的 80）
+```
+
+#### 5.防火墙中打开nginx端口
+
+```shell
+#防火墙中打开nginx端口（默认的 80）
 vim /etc/sysconfig/iptables
 #在-A INPUT -p tcp -m state --state NEW -m tcp --dport 22 -j ACCEPT下
 #添加如下端口行：
@@ -372,44 +402,42 @@ vim /etc/sysconfig/iptables
 service iptables restart
 ```
 
-### 8. 访问文件
+#### 6. 配置conf
 
 ```shell
-#① 修改nginx.conf
- vim /usr/local/nginx/conf/nginx.conf
+#修改nginx.conf
+vim /usr/local/nginx/conf/nginx.conf
  
 #添加如下行，将 /group1/M00 映射到 /opt/fastdfs/file/data
 location /group1/M00 {
     alias /opt/fastdfs/file/data;
 }
 
-
-
 # 重启nginx
-
- /usr/local/nginx/sbin/nginx -s reload
+/usr/local/nginx/sbin/nginx -s reload
  
-#② 在浏览器访问之前上传的图片、成功。
-#http://192.168.1.160/group1/M00/00/00/wKgBoFw4NWaAIFQsAACgIuTmy1Q390.jpg
+# 在浏览器访问之前上传的图片、成功。
+#http://x.x.x.x/group1/M00/00/00/wKgBoFw4NWaAIFQsAACgIuTmy1Q390.jpg
  
-
 
 #外部访问只能用地址访问。如果内部能访问外部访问不了，一般是防火墙没设置好，vi /etc/sysconfig/iptables
 #,比较 -A INPUT -m state --state NEW -m tcp -p tcp --dport 80 -j ACCEPT是否有，然后再重新加载 #systemctl restart iptables.service
  
 ```
 
-### 9. 访fastDFS配置nginx模块（非必须）
+### 八. 访fastDFS配置nginx模块（非必须）
 
-```sh
- 
-① fastdfs-nginx-module ，为啥安它？
+#### fastdfs-nginx-module 为啥安它？
+
 FastDFS 通过 Tracker 服务器，将文件放在 Storage 服务器存储， 但是同组存储服务器之间需要进行文件复制， 有同步延迟的问题。如果就一个服务器，也不搞什么集群，不怕崩，可以略过此步。
 假设 Tracker 服务器将文件上传到了 192.168.51.128，上传成功后文件 ID已经返回给客户端。
 此时 FastDFS 存储集群机制会将这个文件同步到同组存储 192.168.51.129，在文件还没有复制完成的情况下，客户端如果用这个文件 ID 在 192.168.51.129 上取文件,就会出现文件无法访问的错误。
 而 fastdfs-nginx-module 可以重定向文件链接到源服务器取文件，避免客户端由于复制延迟导致的文件无法访问错误。
- 
-#② 下载 fastdfs-nginx-module、解压
+
+#### 安装fastdfs-nginx-module
+
+```sh
+ # 下载 fastdfs-nginx-module、解压
 # 这里为啥这么长一串呢，因为最新版的master与当前nginx有些版本问题。
 wget https://github.com/happyfish100/fastdfs-nginx-module/archive/5e5f3566bbfa57418b5506aaefbe107a42c9fcb1.zip
  
@@ -421,7 +449,13 @@ wget https://github.com/happyfish100/fastdfs-nginx-module/archive/5e5f3566bbfa57
 # 重命名，如果是最新的就不用重命名了
  mv fastdfs-nginx-module-5e5f3566bbfa57418b5506aaefbe107a42c9fcb1  fastdfs-nginx-module-master
  
-#③ 配置Nginx
+
+
+```
+
+#### 配置nginx
+
+```shell
 #在nginx中添加模块
 # 先停掉nginx服务
 /usr/local/nginx/sbin/nginx -s stop
@@ -444,7 +478,14 @@ make & make install
 #查看Nginx的模块:/usr/local/nginx/sbin/nginx -V
 
  
-#④ 复制 fastdfs-nginx-module 的配置文件到/etc/fdfs 目录， 并修改
+
+ 
+```
+
+#### 配置mod_fastdfs.conf
+
+```shell
+# 复制 fastdfs-nginx-module 的配置文件到/etc/fdfs 目录， 并修改
 cd /opt/software/fastdfs-nginx-module-master/src
 cp mod_fastdfs.conf /etc/fdfs/
 vi /etc/fdfs/mod_fastdfs.conf
@@ -463,11 +504,26 @@ url_have_group_name = true
 # Storage 配置的store_path0路径，必须和storage.conf中的一致store_path0=/opt/fastdfs/file
 
 
-#⑤ 复制FastDFS 的部分配置文件到/etc/fdfs 目录,
+# 复制FastDFS 的部分配置文件到/etc/fdfs 目录,
 cd /opt/software/fastdfs-5.05/conf/
 cp anti-steal.jpg http.conf mime.types /etc/fdfs/
 
-#⑥ 配置nginx转发规则，修改nginx.conf
+
+
+ 
+#⑦ 在/ljzsg/fastdfs/file 文件存储目录下创建软连接，将其链接到实际存放数据的目录，单机版，这一步可以省略。
+ln -s /opt/fastdfs/file/data/ /opt/fastdfs/file/data/M00 
+ 
+
+#有打印pid字样就算成功：
+
+ 
+#或许现在没看到什么效果，但如果多台机器再传个超大文件，就可以测试出来了，在分组机器未同步时，会重定向到有文件的那台机器。
+```
+
+#### 配置nginx转发规则
+
+```shell
 vim /usr/local/nginx/conf/nginx.conf
 
 #在80端口添加：
@@ -475,21 +531,24 @@ location ~/group([0-9])/M00 {
     ngx_fastdfs_module;
 }
 #说明：listen 80 端口值是要与 /etc/fdfs/storage.conf 中的 http.server_port=80 (前面改成80了)相对应,
- 
-#⑦ 在/ljzsg/fastdfs/file 文件存储目录下创建软连接，将其链接到实际存放数据的目录，单机版，这一步可以省略。
-ln -s /opt/fastdfs/file/data/ /opt/fastdfs/file/data/M00 
- 
- 
-#⑧ 启动nginx
-/usr/local/nginx/sbin/nginx
-#有打印pid字样就算成功：
-
- 
-#或许现在没看到什么效果，但如果多台机器再传个超大文件，就可以测试出来了，在分组机器未同步时，会重定向到有文件的那台机器。
- 
- 
-
 ```
+
+#### 创建软连接
+
+```shell
+# 在/ljzsg/fastdfs/file 文件存储目录下创建软连接，将其链接到实际存放数据的目录，单机版，这一步可以省略。
+ln -s /opt/fastdfs/file/data/ /opt/fastdfs/file/data/M00 
+```
+
+#### 启动nginx
+
+```shell
+/usr/local/nginx/sbin/nginx
+```
+
+
+
+
 
 ## JAVA文件操作
 
