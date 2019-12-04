@@ -96,7 +96,6 @@
 
 1. [redis相关](https://github.com/a827871781/Java-notes/blob/master/redis/redis相关.md)
 
-2. https://github.com/a827871781/Java-notes/blob/master/images/1.png)
 
 ### [算法与数据结构](https://github.com/a827871781/Java-notes/tree/master/算法与数据结构)
 1. [数组与稀疏数组互转](https://github.com/a827871781/Java-notes/blob/master/算法与数据结构/数组与稀疏数组互转.md)
@@ -165,11 +164,11 @@
 25. [享元模式](https://github.com/a827871781/Java-notes/blob/master/设计模式/享元模式.md)
 26. [方法工厂模式](https://github.com/a827871781/Java-notes/blob/master/设计模式/方法工厂模式.md)
 ### [Elasticsearch](https://github.com/a827871781/Java-notes/tree/master/Elasticsearch)
-2. [IK分词器热更新](https://github.com/a827871781/Java-notes/blob/master/Elasticsearch/IK分词器热更新.md)
-3. [es倒排索引](https://github.com/a827871781/Java-notes/blob/master/Elasticsearch/es倒排索引.md)
-4. [Centos 7 安装elk 6](https://github.com/a827871781/Java-notes/blob/master/Elasticsearch/Centos 7 安装elk 6.3.2.md)
-5. [es 基础](https://github.com/a827871781/Java-notes/blob/master/Elasticsearch/es 基础.md)
-6. [ES IK 自定义分词词库配置](https://github.com/a827871781/Java-notes/blob/master/Elasticsearch/ES IK 自定义分词词库配置.md)
+1.  [IK分词器热更新](https://github.com/a827871781/Java-notes/blob/master/Elasticsearch/IK分词器热更新.md)
+2.  [es倒排索引](https://github.com/a827871781/Java-notes/blob/master/Elasticsearch/es倒排索引.md)s
+3. [Centos 7 安装elk 6](https://github.com/a827871781/Java-notes/blob/master/Elasticsearch/Centos 7 安装elk 6.3.2.md)
+4. [es 基础](https://github.com/a827871781/Java-notes/blob/master/Elasticsearch/es 基础.md)
+5. [ES IK 自定义分词词库配置](https://github.com/a827871781/Java-notes/blob/master/Elasticsearch/ES IK 自定义分词词库配置.md)
 ### [Git](https://github.com/a827871781/Java-notes/tree/master/Git)
 1. [GitHub骚操作](https://github.com/a827871781/Java-notes/blob/master/Git/GitHub骚操作.md)
 2. [git常用命令](https://github.com/a827871781/Java-notes/blob/master/Git/git常用命令.md)
