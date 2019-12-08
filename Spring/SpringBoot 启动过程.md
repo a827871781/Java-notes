@@ -2,7 +2,7 @@
 
 1. `new SpringApplication`  
 2. 加载webApplicationType 对象 推断是web环境 还是非web环境
-3. 通过`SpringFactoriesLoader`，加载`META-INF/spring.factories` 所有`ApplicationContextInitializer、     `ApplicationListener`
+3. 通过`SpringFactoriesLoader`，加载`META-INF/spring.factories` 所有`ApplicationContextInitializer、ApplicationListener`
 4. 通过堆栈里获取的方式，判断 `main `函数，找到原始启动的 `main` 函数
 5. 然后由 `SpringApplicationRunListener` 来发出 starting 消息
 6. 创建参数，并配置当前 `SpringBoot` 应用将要使用的` Environment`
