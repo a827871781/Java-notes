@@ -16,9 +16,7 @@ Elasticsearch 的官方 low-level 客户端。 它允许通过 http 与 Elastics
 
 #####  Java 高级 REST 客户端（Java High Level REST Client）
 
-Elasticsearch 的官方 high-level 客户端。 基于 low
-
--level 客户端，它公开了 API 特定的方法，并负责处理。内部仍然是基于低级客户端。它提供了更多的 API，接受请求对象作为参数并返回响应对象，由客户端自己处理编码和解码。每个 API 都可以同步或异步调用。 同步方法返回一个响应对象，而异步方法的名称以 async 后缀结尾，需要一个监听器参数，一旦收到响应或错误，就会被通知（由低级客户端管理的线程池）。高级客户端依赖于 Elasticsearch core 项目。 它接受与 TransportClient 相同的请求参数并返回相同的响应对象。**但 不完善**
+Elasticsearch 的官方 high-level 客户端。 基于 low-level 客户端，它公开了 API 特定的方法，并负责处理。内部仍然是基于低级客户端。它提供了更多的 API，接受请求对象作为参数并返回响应对象，由客户端自己处理编码和解码。每个 API 都可以同步或异步调用。 同步方法返回一个响应对象，而异步方法的名称以 async 后缀结尾，需要一个监听器参数，一旦收到响应或错误，就会被通知（由低级客户端管理的线程池）。高级客户端依赖于 Elasticsearch core 项目。 它接受与 TransportClient 相同的请求参数并返回相同的响应对象。**但 不完善**
 
 ### 在这里 我选择的是 Java 高级 REST 客户端 ,原因是:
 
