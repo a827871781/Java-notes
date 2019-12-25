@@ -18,8 +18,6 @@
 12. [动态代理](https://github.com/a827871781/Java-notes/blob/master/java基础/动态代理.md)
 
 
-
-
 ### [集合](https://github.com/a827871781/Java-notes/tree/master/集合)
 
 1. [Collection与Map比较](https://github.com/a827871781/Java-notes/blob/master/集合/Collection与Map比较.md)
