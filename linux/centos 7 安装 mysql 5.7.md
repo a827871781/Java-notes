@@ -46,44 +46,39 @@ yum repolist all | grep mysql
 yum -y install mysql-community-server
 ```
 
-# 7.启动 MySQL 服务
+
+
+# 7.测试连接 MySQL 服务
 
 ```shell
+#先启动MySQL服务
 systemctl start mysqld
-```
 
-# 8.测试连接 MySQL 服务
-
-```shell
+#连接MySQL
 mysql -u root 或者 mysql
---------------------------------------------------------------------------------
-
+-------------------------------------------------------
 提示:
 
-刚安装的 MySQL 是没有密码的，这时如果出现：
+刚安装的 MySQL 会随机生成密码
+在 /var/log/mysqld.log 这个文件的前几行即可找到
 
-ERROR 1045 (28000): Access denied for user 'root'@'localhost' (using password: NO)，解决如下：
 
-① 停止 MySQL 服务：systemctl stop mysqld 
 
-② 以不检查权限的方式启动 MySQL: mysqld --user=root --skip-grant-tables &
+#修改密码：
+set password=password("xxxxxx");
 
-③ 再次输入 mysql -u root 或者 mysql，这次就可以进来了。
+#刷新：
+flush privileges;
 
-④ 更新密码：
-
-MySQL 5.7 版本：UPDATE mysql.user SET authentication_string=PASSWORD('123456') where USER='root';
-
-⑤ 刷新：flush privileges;
-
-⑥ 退出：exit;
+#退出：
+exit;
 
 设置完之后，输入 mysql -u root -p，这时输入刚设置的密码，就可以登进数据库了。
 
---------------------------------------------------------------------------------
+
 ```
 
-# 9.防火墙设置
+# 8.防火墙设置
 
 将 MySQL 服务加入防火墙，然后重启防火墙：
 
@@ -97,7 +92,7 @@ systemctl restart firewalld
 
 ```
 
-# 10.设置允许远程访问
+# 9.设置允许远程访问
 
 ```shell
 #登陆mysql
@@ -105,32 +100,32 @@ mysql -u root -p
 #修改 Mysql-Server 用户配置
 USE mysql;
 
+#授权
 GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' IDENTIFIED BY '你的密码' WITH GRANT OPTION;
+
 flush privileges;
 
 --------------------------------------------------------------------
 在执行第一条命令的时候，可能会报：
 
 'ERROR 1820 (HY000): You must reset your password using ALTER USER statement before executing this statement.' 需要让我们重置密码。
-
-alter user 'root'@'localhost' identified by '你的密码';  
-flush privileges;
+这时候就参看第七步的修改密码即可
 ```
 
 ps:云服务器 记得将3306端口加入安全组
 
-# 11.启动/停止/重启
+# 10.常用命令
 
 ## 启动
 
 ```shell
-systemctl mysqld start
+systemctl start mysqld 
 ```
 
 ## 停止
 
 ```shell
-systemctl mysqld stop
+systemctl stop mysqld 
 ```
 
 
@@ -138,6 +133,16 @@ systemctl mysqld stop
 ## 重启
 
 ```shell
-systemctl mysqld restart
+systemctl restart mysqld 
 ```
+
+##查看MySQL当前运行状态
+
+```shell
+systemctl status mysqld 
+```
+
+
+
+
 
