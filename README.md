@@ -19,7 +19,7 @@
 2. [Exception和Error区别](https://github.com/a827871781/Java-notes/blob/master/java基础/Exception和Error区别.md)
 3. [JavaIO](https://github.com/a827871781/Java-notes/blob/master/java基础/JavaIO.md)
 4. [Synchronized和ReentrantLock区别](https://github.com/a827871781/Java-notes/blob/master/java基础/Synchronized和ReentrantLock区别.md)
-5. [final、finally、 finalize区别](https://github.com/a827871781/Java-notes/blob/master/java基础/final、finally、 finalize区别.md)
+5. [final、finally/ finalize区别](https://github.com/a827871781/Java-notes/blob/master/java基础/final、finally、 finalize区别.md)
 6. [servlet生命周期](https://github.com/a827871781/Java-notes/blob/master/java基础/servlet生命周期.md)
 7. [String、StringBufer、StringBuilder特性](https://github.com/a827871781/Java-notes/blob/master/java基础/String、StringBufer、StringBuilder特性.md)
 8. [线程的生命周期和状态转移](https://github.com/a827871781/Java-notes/blob/master/java基础/线程的生命周期和状态转移.md)
@@ -178,7 +178,7 @@
 26. [方法工厂模式](https://github.com/a827871781/Java-notes/blob/master/设计模式/方法工厂模式.md)
 ### [Elasticsearch](https://github.com/a827871781/Java-notes/tree/master/Elasticsearch)
 1.  [IK分词器热更新](https://github.com/a827871781/Java-notes/blob/master/Elasticsearch/IK分词器热更新.md)
-2.  [es倒排索引](https://github.com/a827871781/Java-notes/blob/master/Elasticsearch/es倒排索引.md)s
+2.  [es倒排索引](https://github.com/a827871781/Java-notes/blob/master/Elasticsearch/es倒排索引.md)
 3. [Centos 7 安装elk 6](https://github.com/a827871781/Java-notes/blob/master/Elasticsearch/Centos 7 安装elk 6.3.2.md)
 4. [es 基础](https://github.com/a827871781/Java-notes/blob/master/Elasticsearch/es 基础.md)
 5. [ES IK 自定义分词词库配置](https://github.com/a827871781/Java-notes/blob/master/Elasticsearch/ES IK 自定义分词词库配置.md)
