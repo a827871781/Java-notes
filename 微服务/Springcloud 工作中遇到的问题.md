@@ -1,4 +1,19 @@
 ### SpringCloud 工作中遇到的问题
+#### 服务间调用连接超时 read Timeout
+在使用 SpringCloud 进行服务间调用时出现连接超时的错误，错误信息：Read timed out executing GET
+原因
+用 idea 开发 debug 模式调试代码时，在处理服务间调用时，由于 debug 模式调试代码花费一些时间，结果出现 Fegin 连接超时问题
+
+解决方案
+在配置文件中添加
+
+ribbon:
+    ReadTimeout=60000
+    ConnectTimeout=60000
+    MaxAutoRetries=0
+    MaxAutoRetriesNextServer=1 
+
+服务间调用其实走的是 http 请求，debug 了一下默认的 ReadTimeout 时间为 5s，ConnectTimeout 时间为 2s。用 Fegin 进行服务间调用，底层用的还是 Ribbon
 
 #### feign 服务调用时默认传输格式为xml  
 
