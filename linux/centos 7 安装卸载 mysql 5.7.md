@@ -54,18 +54,30 @@ yum -y install mysql-community-server
 #先启动MySQL服务
 systemctl start mysqld
 
-#连接MySQL
-mysql -u root 或者 mysql
 -------------------------------------------------------
 提示:
-
 刚安装的 MySQL 会随机生成密码
-在 /var/log/mysqld.log 这个文件的前几行即可找到
+在 /var/log/mysqld.log 这个文件内可以找到
+可以通过命令
+grep 'temporary password' /var/log/mysqld.log
 
+2020-05-07T03:28:03.813112Z 1 [Note] A temporary password is generated for root@localhost: ncvE4Pt>Q>uh
+
+ncvE4Pt>Q>uh 就是密码
+-------------------------------------------------------
+#连接MySQL
+mysql -u root -p 
+输入密码即可进入
 
 
 #修改密码：
-set password=password("xxxxxx");
+#请注意 mysql 对于密码强度有需求,如果想要设置简单密码
+#将密码设置为最低级别的
+set global validate_password_policy=0;  
+#密码长度短于8个字符，还要执行以下命令,最低就是4
+set global validate_password_length=4; 
+
+alter user 'root'@'localhost' identified by 'xxxxxx';
 
 #刷新：
 flush privileges;
@@ -144,5 +156,51 @@ systemctl status mysqld
 
 
 
+# 卸载
 
+### 1. 查看mysql安装了哪些东西
+
+```shell
+
+rpm -qa |grep -i mysql
+
+```
+
+![mysql.jpg](https://i.loli.net/2020/05/07/Ms8lGixEz5BkFRP.jpg)
+
+### 2.将查询出来的mysql相关卸载
+
+```shell
+#将mysql-community开头的全部卸载
+yum remove mysql-community*
+
+#再删除其他,根据你的查询结果用yum remove 卸载即可
+
+#卸载完成后 执行以下命令,核实卸载结果
+rpm -qa |grep -i mysql
+
+```
+
+### 3.查找mysql相关目录,并删除
+
+```shell
+find / -name mysql
+
+
+rm -rf 查询出来的相关目录
+
+```
+
+### 4.删除/etc/my.cnf
+
+```shell
+rm -rf /etc/my.cnf
+```
+
+### 5.删除/var/log/mysqld.log
+
+```shell
+#如果不删除这个文件，会导致新安装的mysql无法生存新密码，导致无法登陆
+rm -rf /var/log/mysqld.log
+```
 
