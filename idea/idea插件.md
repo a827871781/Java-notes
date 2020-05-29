@@ -22,6 +22,11 @@
 | Save action                    | 自动格式化代码 及删除无用包和google java format 组合使用 | 配置 图 1                  |
 | FindBugs-IDEA                  | 前找到这些潜在的问题                                     |                            |
 | pojo-to-json                   | bean 转 json                                             | 选中bean 名称,右键makejson |
+| JRebel mybatisPlus extension   | jrebel 的增强,真的mybatis plus 的xml 热部署              |                            |
+|                                |                                                          |                            |
+|                                |                                                          |                            |
+|                                |                                                          |                            |
+|                                |                                                          |                            |
 
 ## Save action
 
