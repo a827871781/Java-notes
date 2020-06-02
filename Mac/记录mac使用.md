@@ -12,14 +12,13 @@ Mac os
 | xmind                                              | 思维导图                                             |
 | typora                                             | mackdown                                             |
 | https://github.com/sindresorhus/quick-look-plugins | 增强预览功能，                                       |
-| contexts                                           | app 切换                                             |
+| contexts                                           | app 切换,                                            |
 | istat menus                                        | mac 状态栏工具，查看电脑状态                         |
-| iText                                              | orc，截图识字，并翻译                                |
+| Text Scanner                                       | orc，截图识字，并翻译                                |
 | 1password                                          | 密码记录                                             |
 | CheatSheet                                         | 快捷键提示工具                                       |
 | magent                                             | 分屏工具.上手即用,缺点,无法在两个显示器间移动        |
 | NewFileMenu                                        | 右键增强工具，快速各种格式新建文件。                 |
-| 奇妙清单                                           | 待办清单，结合 alfred 很好用                         |
 | SwitchKey                                          | 自动切换输入法                                       |
 | dash                                               | 文档，免费版的需要 10S 才可以看到结果。              |
 | alfred                                             | 效率神器                                             |
@@ -28,8 +27,8 @@ Mac os
 | BetterAndBetter                                    | 定义快捷键,和手势的                                  |
 | Picgo                                              | 图床上传                                             |
 | moom                                               | 有第二块屏幕的最佳分屏软件.缺点需要自己配置          |
-|                                                    |                                                      |
-|                                                    |                                                      |
+| SpaceLauncher                                      | 空格 + key  打开应用                                 |
+| xnip                                               | 截图,支持长截图,免费用 有内购,免费版长截图有水印,    |
 |                                                    |                                                      |
 |                                                    |                                                      |
 |                                                    |                                                      |
