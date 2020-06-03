@@ -70,7 +70,10 @@ plugins=(其他的插件 zsh-autosuggestions)
 
 ```shell
  #在 ~/.zshrc 中增加如下行
+ # 支持以下颜色 black, red, green, yellow, blue, magenta, cyan and white 
  ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=yellow'
+ #可能会不生效 那么就执行一下命令并重启item
+ echo "export TERM=xterm-256color" >> ~/.zshrc
 ```
 
 
