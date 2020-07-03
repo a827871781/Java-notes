@@ -1,14 +1,3 @@
-## ZSH
-
-```shell
-wget https://github.com/FanhuaCloud/ZSH_Install/archive/master.zip
-unzip master.zip
-cd ZSH_Install-master
-./zsh.sh
-```
-
-执行完脚本后:
-
 ### 配置插件:
 
 #### autojump
