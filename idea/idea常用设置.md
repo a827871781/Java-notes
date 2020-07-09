@@ -87,3 +87,7 @@ File --> Settings -->  Editor --> Fo;e Encodings
 -   勾选Transparent native-to-ascii conversion
 
 ![image-20191204175626564](/Users/syz/Library/Application Support/typora-user-images/image-20191204175626564.png)
+
+# idea 正则匹配
+
+![image-20200709133148208](https://i.loli.net/2020/07/09/ZaADLnRxNjFVhS2.png)
