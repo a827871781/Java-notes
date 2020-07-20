@@ -203,3 +203,22 @@ $.ajax({
 }) 
 ```
 
+#### JSON格式，时间属性
+
+```
+前端参数：
+{
+”time“ : ”2020/07/18 00:34:16“
+	
+
+}
+
+后端json对象添加注解
+@JsonFormat(pattern = "yyyy/MM/dd HH:mm:ss", timezone = "GMT+8")
+private Date time
+
+注意格式： 前端是2020/07/18 00:34:16   后端就 yyyy/MM/dd HH:mm:ss  前端是 2020-07-18  后端就 yyyy-MM-dd
+
+
+```
+
