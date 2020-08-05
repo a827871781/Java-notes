@@ -91,3 +91,11 @@ File --> Settings -->  Editor --> Fo;e Encodings
 # idea 正则匹配
 
 ![image-20200709133148208](https://i.loli.net/2020/07/09/ZaADLnRxNjFVhS2.png)
+
+# idea复制所选的行数完整内容
+
+![image-20200804105159880](https://i.loli.net/2020/08/04/HEVohI3PiyRls6L.png)
+
+Command +d 快捷键本来将复制所选内容并黏贴的，但是黏贴的位置是补充在原来的位置后。
+
+改成这个就会变成复制所选行，并粘贴
