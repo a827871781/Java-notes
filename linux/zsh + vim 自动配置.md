@@ -7,8 +7,6 @@
 `cd` 命令进入 `~/user/github/Youthink` 文件夹，下一次再想进入 `Yourhink` 文件夹的时候，直接 `j youthink` 即可
 或者只输入 `youthink` 的一部分 `youth` 都行
 
-
-
 ```shell
 #安装 autojump  mac
 brew install autojump
@@ -44,13 +42,14 @@ plugins=(其他的插件 zsh-syntax-highlighting)
 
 效率神器 👍
 
-如图输入命令时，会给出建议的命令（灰色部分）按键盘 → 补全
+输入命令时，会给出建议的命令按键盘 → 补全
 
 ```shell
 #安装
 git clone git://github.com/zsh-users/zsh-autosuggestions $ZSH_CUSTOM/plugins/zsh-autosuggestions
 #在 ~/.zshrc 中配置
 plugins=(其他的插件 zsh-autosuggestions)
+
 ```
 
 这个可能会有颜色不清晰的问题
@@ -67,8 +66,26 @@ plugins=(其他的插件 zsh-autosuggestions)
 
 
 
-#### 使配置生效
+## zsh-history-substring-search
 
+**作用**
+
+基于输入的部分命令匹配历史记录，按上下键切换
+
+```shell
+#安装
+ git clone https://github.com/zsh-users/zsh-history-substring-search ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-history-substring-search
+
+#在 ~/.zshrc 中配置
+plugins=(其他的插件 zsh-history-substring-search)
+
+#使配置生效
+source ~/.zshrc
+```
+
+
+
+#使配置生效
 ```shell
 source ~/.zshrc
 ```
