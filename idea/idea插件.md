@@ -24,7 +24,7 @@
 | pojo-to-json                   | bean 转 json                                                 | 选中bean 名称,右键makejson |
 | JRebel mybatisPlus extension   | jrebel 的增强,mybatis plus 的xml 热部署                      |                            |
 | GsonFormat                     | json格式化成类                                               |                            |
-|                                |                                                              |                            |
+| codota                         | 智能代码提示,代码搜索                                        |                            |
 |                                |                                                              |                            |
 |                                |                                                              |                            |
 
