@@ -39,7 +39,7 @@ node -v
 npm -v
 echo "info:开始删除dist目录"
 rm -rf dist
-npm install chromedriver --chromedriver_cdnurl=http://cdn.npm.taobao.org/dist/chromedriver
+
 npm install
 echo "info:开始编译"
 gulp
