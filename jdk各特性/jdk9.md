@@ -16,8 +16,6 @@ REPL(Read Eval Print Loop)意为交互式的编程环境。
 
 JShell 是 Java 9 新增的一个交互式的编程环境工具。它允许你无需使用类或者方法包装来执行 Java 语句。它与 Python 的解释器类似，可以直接 输入表达式并查看其执行结果。
 
-![1554884929738](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\1554884929738.png)
-
 1. Java9 提供了一个交互式环境，不用再创建一个 project 或是其他的模块，就可以直接用来执行 Java 代码，所见即所得；
 2. 可以动态修改正在运行中的程序，
 3. 方便测试。

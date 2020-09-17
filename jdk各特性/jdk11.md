@@ -6,27 +6,21 @@ Java 11 增加了一系列的字符串处理方法，如以下所示。
 
 ```java
 // 判断字符串是否为空白  
-
 " ".isBlank();                // true  
 
 // 去除首尾空格  
-
 " Javastack ".strip();          // "Javastack"  
 
 // 去除尾部空格   
-
 " Javastack ".stripTrailing();  // " Javastack"  
 
 // 去除首部空格   
-
 " Javastack ".stripLeading();   // "Javastack "  
 
 // 复制字符串  
-
 "Java".repeat(3);             // "JavaJavaJava"  
 
 // 行数统计  
-
 "A\nB\nC".lines().count();    // 3 
 ```
 
@@ -36,25 +30,24 @@ Java 11 增加了一系列的字符串处理方法，如以下所示。
 
 **示例 1：**
 
-```
+```java
 var list = List.of("Java", "Python", "C");  
 
 var copy = List.copyOf(list);  
 
 System.out.println(list == copy);   // true 
-复制代码
+
 ```
 
 **示例 2：**
 
-```
+```java
 var list = new ArrayList<String>();  
 
 var copy = List.copyOf(list);  
 
 System.out.println(list == copy);   // false 
 
-复制代码
 ```
 
 示例 1 和 2 代码差不多，为什么一个为 true, 一个为 false?
@@ -135,7 +128,7 @@ Stream.of(1, 2, 3, 2, 1)
     .takeWhile(n -> n < 3)  
 
     .collect(Collectors.toList());  // [1, 2] 
-复制代码
+
 ```
 
 从开始计算，当 n < 3 时就截止。
@@ -146,7 +139,7 @@ Stream.of(1, 2, 3, 2, 1)
     .dropWhile(n -> n < 3)  
 
     .collect(Collectors.toList());  // [3, 2, 1] 
-复制代码
+
 ```
 
 这个和上面的相反，一旦 n < 3 不成立就开始计算。
