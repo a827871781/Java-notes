@@ -152,18 +152,19 @@ echo "info:开始构建docker镜像"
 #www 为html 代码路径
 rm -rf www
 
-#缺省将npm build 后的dist目录移动至当前目录下 www目录内
+#缺省将npm build 后的dist目录移动至当前目录下 www目录内,
 *************
 
+# 停止并删除
+docker stop $image_name && docker rm $image_name 
 
-docker stop $image_name 
-docker rm $image_name 
 
 docker build  -t $image_name:$image_version . 
 
 echo "info:构建docker镜像结束"
 
 echo "info:启动docker镜像"
-docker run -d --name $image_name -p 8091:80  -e TZ="Asia/Shanghai"  -e API_SERVER=192.168.50.50  -e API_PORT=5062 -e =127.0.0.1  $image_name:$image_version
+
+docker run -d --name $image_name -p 8091:80  -e TZ="Asia/Shanghai"  -e API_SERVER=192.168.0.1  -e API_PORT=5062 -e =127.0.0.1  $image_name:$image_version
 ```
 
