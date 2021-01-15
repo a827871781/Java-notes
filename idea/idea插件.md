@@ -10,22 +10,22 @@
 | HighlightBracketPair           | 括号自动高亮匹配                                             | nav                        |
 | JRebel for Intellij            | 热部署（力荐，需要破解）                                     | Ctrl + F9                  |
 | Key  Promoter X                | 快捷键提示                                                   |                            |
-| Lombok                         | 通过注解生成代码                                             |                            |
+| Lombok                         | 通过注解生成代码                                             | 2020.3版本后 自带,         |
 | Maven Helper                   | 解决maven jar包冲突                                          |                            |
 | MyBatis log Plugin             | 优化mybatis 日志输出，直接生成sql                            | ctrl + shift + alt + o     |
 | MyBatisCodeHelperPro           | 代码生成（力荐，需破解）                                     |                            |
-| Plugin aiXcoder                | 智能代码提示（暂时没感觉作用）                               | ctrl + space               |
+| Codota                         | 智能代码提示/搜索                                            | ctrl + space               |
 | Rainbow Brackets               | 配对括号相同颜色                                             |                            |
-| RestfulToolkit / RestfulTool   | 接口自测及接口搜索功能(前者在2020版本后有bug 可以更换为后者) | ctrl + \                   |
-| Translation                    | 谷歌翻译                                                     | ctrl + shift + o           |
+| RestfulTool                    | 接口自测及接口搜索功能(前者在2020版本后有bug 可以更换为后者) | ctrl + \                   |
+| Translation                    | 谷歌翻译                                                     | ctrl + alt + o   / u /  i  |
 | alibaba cloud toolkit          | 远程部署                                                     |                            |
 | Save action                    | 自动格式化代码 及删除无用包和google java format 组合使用     | 配置 图 1                  |
 | FindBugs-IDEA                  | 前找到这些潜在的问题                                         |                            |
-| pojo-to-json                   | bean 转 json                                                 | 选中bean 名称,右键makejson |
+| pojo to json Schema            | bean 转 json                                                 | 选中bean 名称,右键makejson |
 | JRebel mybatisPlus extension   | jrebel 的增强,mybatis plus 的xml 热部署                      |                            |
 | GsonFormat                     | json格式化成类                                               |                            |
 | codota                         | 智能代码提示,代码搜索                                        |                            |
-|                                |                                                              |                            |
+| Randomness                     | 随机生成字符,数字                                            | option + r                 |
 |                                |                                                              |                            |
 
 ## Save action
