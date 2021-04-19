@@ -9,7 +9,7 @@ mkdir mongo
 
 echo '{
   "port": "3000",
-  "adminAccount": "admin@admin.com",
+  "adminAccount": "cy@admin.com",
   "timeout":120000,
   "db": {
     "servername": "127.0.0.1",
@@ -20,7 +20,7 @@ echo '{
     "authSource": ""
   },
   "mail": {
-    "enable": true,
+    "enable": false,
     "host": "smtp.163.com",
     "port": 465,
     "from": "***@163.com",

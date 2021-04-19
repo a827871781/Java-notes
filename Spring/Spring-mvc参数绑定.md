@@ -139,7 +139,7 @@ Public class Person{
 } 
 ```
 
-
+json 字符串内的  时间  可以用  @JsonFormat(pattern = "yyyy-MM-dd")
 
 参考：
 

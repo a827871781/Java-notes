@@ -92,6 +92,8 @@ File --> Settings -->  Editor --> Fo;e Encodings
 
 ![image-20200709133148208](https://i.loli.net/2020/07/09/ZaADLnRxNjFVhS2.png)
 
+https://blog.csdn.net/lbo00000/article/details/103583929?utm_medium=distribute.pc_relevant.none-task-blog-baidujs_title-2&spm=1001.2101.3001.4242
+
 # idea复制所选的行数完整内容
 
 ![image-20200804105159880](https://i.loli.net/2020/08/04/HEVohI3PiyRls6L.png)
